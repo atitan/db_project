@@ -18,6 +18,9 @@ class CreateOrdersTable extends Migration {
             $table->increments('id')->unsigned()->unique();
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
+			$table->string('contact');
+			$table->string('phone');
+			$table->string('address');
 			$table->integer('total');
             $table->timestamps();
         });

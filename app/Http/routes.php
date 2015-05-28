@@ -19,9 +19,11 @@ $app->get('/products/{page}', ['uses' => 'App\Http\Controllers\ProductController
 
 $app->group(['prefix' => 'user'], function($app)
 {
-	$app->get('login', ['uses' => 'App\Http\Controllers\UserController@new', 'as' => 'user_login_new']);
-	$app->post('login', ['uses' => 'App\Http\Controllers\UserController@create', 'as' => 'user_login_create']);
-	$app->delete('logout', ['uses' => 'App\Http\Controllers\UserController@logout', 'as' => 'user_login_delete']);
+	$app->get('login', ['uses' => 'App\Http\Controllers\UserController@loginPage', 'as' => 'user_login_page']);
+	$app->post('login', ['uses' => 'App\Http\Controllers\UserController@login', 'as' => 'user_login_login']);
+	$app->get('signup', ['uses' => 'App\Http\Controllers\UserController@signupPage', 'as' => 'user_signup_page']);
+	$app->post('signup', ['uses' => 'App\Http\Controllers\UserController@signup', 'as' => 'user_signup_signup']);
+	$app->get('logout', ['uses' => 'App\Http\Controllers\UserController@logout', 'as' => 'user_login_delete']);
 });
 
 // Login needed

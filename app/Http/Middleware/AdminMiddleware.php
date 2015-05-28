@@ -13,13 +13,13 @@ class AdminMiddleware {
      */
     public function handle($request, Closure $next)
     {
-		// Check login
-		$user = Auth::user();
-		if (!$user->isAdmin()) {
-			return redirect('welcome');
-		}
 
-		return $next($request);
+		// Check admin
+        if (Session::has('user') && Session::get('user')->is_admin) {
+            return $next($request);
+        }
+
+		return redirect('/');
     }
 
 }
