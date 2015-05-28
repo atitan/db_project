@@ -2,7 +2,7 @@
 
 use Closure;
 
-class ExampleMiddleware {
+class AuthMiddleware {
 
     /**
      * Handle an incoming request.
@@ -13,7 +13,12 @@ class ExampleMiddleware {
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+		// Check login
+		if (!Auth::check()) {
+			return redirect('login');
+		}
+
+		return $next($request);
     }
 
 }
