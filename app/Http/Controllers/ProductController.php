@@ -1,12 +1,14 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller {
 
-    public function index($page)
+    public function index()
     {
-        return view('user.profile', ['user' => User::findOrFail($id)]);
+        $products = DB::select('select * from products');
+        return view('products', ['products' => $products]);
     }
 
 }

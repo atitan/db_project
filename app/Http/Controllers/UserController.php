@@ -11,7 +11,7 @@ class UserController extends Controller {
 
     public function loginPage()
     {
-        return '<form method="post"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="text" name="username" value=""><input type="text" name="password" value=""><input type="submit" value="submit"></form>';
+        return view('user.login');
     }
 
     public function login(Request $req)
@@ -32,7 +32,7 @@ class UserController extends Controller {
 
     public function signupPage()
     {
-        return '<form method="post"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="text" name="username" value=""><input type="text" name="password" value=""><input type="text" name="email" value""><input type="submit" value="submit"></form>';
+        return view('user.signup');
     }
 
     public function signup(Request $req)

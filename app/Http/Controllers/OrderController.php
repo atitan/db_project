@@ -1,27 +1,49 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\RedirectResponse;
 
 class OrderController extends Controller {
 
     public function index()
     {
-        return view('user.profile', ['user' => User::findOrFail($id)]);
+        $orders = DB::select('select * from orders where user_id = ?', [Session::get('user')->id]);
+        return view('orders', ['orders' => $orders]);
+    }
+
+    public function create(Request $req)
+    {
+        return redirect()->route('order_show', ['id' => $id]);
     }
 
     public function show($id)
     {
-        return view('user.profile', ['user' => User::findOrFail($id)]);
+        $order = DB::select('select * from orders where id = ? and user_id = ?', [$id, Session::get('user')->id]);
+        return view('order', ['order' => $order]);
     }
 
-    public function update($id)
+    public function update(Request $req, $id)
     {
-        return view('user.profile', ['user' => User::findOrFail($id)]);
+        $this->validate($req, [
+            'contact' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+
+        $order = DB::update(
+            'update orders set contact = ?, phone = ?, address = ? where id = ? and user_id = ?',
+            [$req->input('contact'), $req->input('phone'), $req->input('address'), $id, Session::get('user')->id]
+        );
+        return redirect()->route('order_show', ['id' => $id]);
     }
 
     public function destroy($id)
     {
-        return view('user.profile', ['user' => User::findOrFail($id)]);
+        $order = DB::delete('delete from orders where id = ? and user_id = ?', [$id, Session::get('user')->id]);
+        return redirect()->route('order_index');
     }
 
 }
