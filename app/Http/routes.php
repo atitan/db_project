@@ -11,11 +11,11 @@
 |
 */
 
-$app->get('/', function() use ($app) {
-    return $app->welcome();
+$app->get('/', function() {
+    return view('welcome');
 });
 
-$app->get('/products/{page}', ['uses' => 'App\Http\Controllers\ProductController@index', 'as' => 'product_index']);
+$app->get('/products', ['uses' => 'App\Http\Controllers\ProductController@index', 'as' => 'product_index']);
 
 $app->group(['prefix' => 'user'], function($app)
 {
@@ -47,6 +47,7 @@ $app->group(['middleware' => 'auth'], function($app)
 		$app->delete('users/{id}', ['uses' => 'App\Http\Controllers\Admin\UserController@destroy', 'as' => 'admin_user_destroy']);
 
 		$app->get('products', ['uses' => 'App\Http\Controllers\Admin\ProductController@index', 'as' => 'admin_product_index']);
+        $app->post('products', ['uses' => 'App\Http\Controllers\Admin\ProductController@create', 'as' => 'admin_product_create']);
 		$app->get('products/{id}', ['uses' => 'App\Http\Controllers\Admin\ProductController@show', 'as' => 'admin_product_show']);
 		$app->put('products/{id}', ['uses' => 'App\Http\Controllers\Admin\ProductController@update', 'as' => 'admin_product_update']);
 		$app->delete('products/{id}', ['uses' => 'App\Http\Controllers\Admin\ProductController@destroy', 'as' => 'admin_product_destroy']);
