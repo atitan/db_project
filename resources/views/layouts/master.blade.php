@@ -16,8 +16,21 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
       <style>
+        @import url(http://fonts.googleapis.com/earlyaccess/cwtexhei.css);
+        @import url(http://fonts.googleapis.com/css?family=Ubuntu);
         body {
+          font-family: 'Ubuntu', 'cwTeXHei', sans-serif;
           padding-top: 70px;
+        }
+        a {
+          text-decoration: none;
+          color: #727272;
+        }
+        a:hover,
+        a:active,
+        a:focus {
+          color: #00796B;
+          text-decoration: none;
         }
         .img-logo {
           display: inline-block;
@@ -83,6 +96,93 @@
           background: #424242;
           color: #E0E0E0;
           padding: 30px 0 20px 0;
+        }
+
+        /* thumbnail 是純粹定義圖片同高縮放 */
+        .thumbnail {
+          height: 240px;
+          margin: 0 auto;
+          overflow: hidden;
+          position: relative;
+        }
+        .thumbnail img {
+          position: absolute;
+          margin: auto;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+
+        /* l-product 是針對 product 有相同樣式可以重複使用 */
+        .l-product {
+          position: relative;
+          background-color: #fff;
+          border: 1px solid #00796B;
+          padding: 10px 10px 30px;
+          margin: 30px 0;
+        }
+        .l-product-content > h3 {
+          color: #212121;
+          min-height: 38px;
+          margin: 15px 0;
+        }
+
+        .l-product-content > p {
+          color: #727272;
+          display: -webkit-box;
+          font-size: 14px; 
+          line-height: 1.5;
+          -webkit-line-clamp: 3;  /* 第 3 行要顯示點點點 */
+          /* height = font-size * line-height * line-clamp + padding-top */
+          height: 63px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-box-orient: vertical;
+        }
+        .l-product-price::before {
+          content: "NT$";
+          background-color: #009688;
+          border: 2px solid #009688;
+          border-radius: 30% 5% 30%;
+          margin-right: 5px;
+          color: #fff;
+          transform: skewX(170deg);
+        }
+        .l-product button {
+          position: absolute;
+          left: 50%;
+          top: 100%;
+          -webkit-transform: translate(-50%, -50%);
+          font-weight: 700;
+          background-color: #009688;
+          color: #fff;
+          border-radius: 3px;
+          border: none;
+          padding: 10px 20px;
+        }
+        .l-product button:hover {
+          background-color: #00796B;
+        }
+
+        .product-btn {
+          position: relative;
+          background-color: transparent;
+          color: #009688;
+          border-radius: 3px;
+          border: none;
+          margin: 20px 20px 0 0;
+        }
+        .product-btn::after {
+          content: "\003e";
+          margin-left: 5px;
+          position: absolute;
+          display: inline-block;
+          background-color: #009688;
+          height: 20px;
+          width: 20px;
+          border: none;
+          color: #FFF;
         }
       </style>
     </head>
