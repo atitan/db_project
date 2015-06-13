@@ -84,6 +84,10 @@
         .v-margin-t0 {
           margin-top: 0;
         }
+        .v-margin-md {
+          margin: 20px 0;
+        }
+
         /* Hr Style */
         /* Gradient transparent - color - transparent */
 
@@ -92,6 +96,7 @@
           height: 1px;
           background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
         }
+        /* Footer Style */
         footer {
           background: #424242;
           color: #E0E0E0;
@@ -131,7 +136,7 @@
         .l-product-content > p {
           color: #727272;
           display: -webkit-box;
-          font-size: 14px; 
+          font-size: 14px;
           line-height: 1.5;
           -webkit-line-clamp: 3;  /* 第 3 行要顯示點點點 */
           /* height = font-size * line-height * line-clamp + padding-top */
@@ -184,6 +189,10 @@
           border: none;
           color: #FFF;
         }
+
+        .nav>li>a.inline-block {
+          display: inline-block;
+        }
       </style>
     </head>
     <body>
@@ -197,7 +206,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand navbar-inline" href="#">
+              <a class="navbar-brand navbar-inline" href="/">
                 <img src="../img/Logo.png" class="img-responsive img-logo" alt="Brand" />購物商場
               </a>
             </div>
@@ -226,10 +235,10 @@
                 <button type="submit" class="btn btn-default">Submit</button>
               </form> -->
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">首頁</a></li>
+                <li class="active"><a href="/">首頁</a></li>
                 <li><a href="#">商品總覽</a></li>
                 <li><a href="#">購物車&nbsp;<span class="badge">3</span></a></li>
-                <li><a href="#">加入會員 / 登入</a></li>
+                <li><a href="/user/signup" class="inline-block">加入會員</a>/<a href="/user/login" class="inline-block">登入</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     XX，您好！<span class="caret"></span>
@@ -266,6 +275,6 @@
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="javascripts/bootstrap.min.js"></script>
+      <script src="/javascripts/bootstrap.min.js"></script>
     </body>
 </html>

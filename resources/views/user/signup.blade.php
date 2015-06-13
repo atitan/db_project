@@ -4,16 +4,23 @@
 
 @section('sidebar')
     @parent
-
-    <p>This is appended to the master sidebar.</p>
 @stop
 
 @section('content')
-<form method="post">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <input type="text" name="username" value="">
-    <input type="text" name="password" value="">
-    <input type="text" name="email" value"">
-    <input type="submit" value="submit">
-</form>
+<div class="col-md-6 col-md-push-3 v-margin-100">
+  <form method="post">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <div class="input-group v-margin-md">
+        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+        <input class="form-control" type="text" name="username" placeholder="Email address">
+      </div>
+      <div class="input-group v-margin-md">
+        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+        <input class="form-control" type="password" name="password" placeholder="Password">
+      </div>
+      <div class="text-right">
+        <input type="submit" value="加入會員" class="btn btn-warning">
+      </div>
+  </form>
+</div>
 @stop
