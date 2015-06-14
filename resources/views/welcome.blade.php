@@ -188,7 +188,7 @@
     </div>
   </article>
   <div class="col-lg-12 text-right h4">
-    <button class="product-btn"><a href="#">See more</a></button>    
+    <button class="product-btn"><a href="/products">See more</a></button>    
   </div>
 </div>
 

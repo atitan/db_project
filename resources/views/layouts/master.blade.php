@@ -159,12 +159,15 @@
           left: 50%;
           top: 100%;
           -webkit-transform: translate(-50%, -50%);
+             -moz-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+               -o-transform: translate(-50%, -50%);
           font-weight: 700;
           background-color: #009688;
           color: #fff;
           border-radius: 3px;
           border: none;
-          padding: 10px 20px;
+          padding: 10px 15px;
         }
         .l-product button:hover {
           background-color: #00796B;
@@ -236,7 +239,7 @@
               </form> -->
               <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="/">首頁</a></li>
-                <li><a href="#">商品總覽</a></li>
+                <li><a href="/products">商品總覽</a></li>
                 <li><a href="#">購物車&nbsp;<span class="badge">3</span></a></li>
                 <li><a href="/user/signup" class="inline-block">加入會員</a>/<a href="/user/login" class="inline-block">登入</a></li>
                 <li class="dropdown">
