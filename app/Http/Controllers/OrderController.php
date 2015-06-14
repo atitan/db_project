@@ -46,4 +46,32 @@ class OrderController extends Controller {
         return redirect()->route('order_index');
     }
 
+    public function cartReview()
+    {
+        $cart = Session::get('cart', []);
+        $ids = implode( ',', array_keys($cart));
+		$products = DB::select('select * from products where id in('.$ids.')');
+        return view('cart', ['products' => $products, 'cart' => $cart]);
+    }
+
+    public function cartAdd(Request $req)
+    {
+        $cart = Session::get('cart', []);
+        $id = $req->input('id');
+        $quan = $req->input('quan');
+
+        if (empty(DB::select('select * from products where id=?',[$id]))) {
+            abort(404);
+        }
+
+        if (array_key_exists($id, $cart)) {
+            $cart[$id] += 1;
+        } else {
+            $cart[$id] = 1;
+        }
+
+        Session::put('cart', $cart);
+        return 'ok';
+    }
+
 }

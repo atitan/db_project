@@ -35,17 +35,15 @@ $app->group(['middleware' => 'auth'], function($app)
     $app->put('/orders/{id}', ['uses' => 'App\Http\Controllers\OrderController@update', 'as' => 'order_update']);
     $app->delete('/orders/{id}', ['uses' => 'App\Http\Controllers\OrderController@destroy', 'as' => 'order_destroy']);
 
+    $app->post('/cart/add', ['uses' => 'App\Http\Controllers\OrderController@cartAdd', 'as' => 'cart_add']);
+    $app->get('/cart', ['uses' => 'App\Http\Controllers\OrderController@cartReview', 'as' => 'cart_review']);
+
     $app->get('/me', ['uses' => 'App\Http\Controllers\UserController@show', 'as' => 'user_me_show']);
     $app->put('/me', ['uses' => 'App\Http\Controllers\UserController@update', 'as' => 'user_me_update']);
 
 	// Admin zone
 	$app->group(['prefix' => 'admin', 'middleware' => 'admin'], function($app)
 	{
-		$app->get('users', ['uses' => 'App\Http\Controllers\Admin\UserController@index', 'as' => 'admin_user_index']);
-		$app->get('users/{id}', ['uses' => 'App\Http\Controllers\Admin\UserController@show', 'as' => 'admin_user_show']);
-		$app->put('users/{id}', ['uses' => 'App\Http\Controllers\Admin\UserController@update', 'as' => 'admin_user_update']);
-		$app->delete('users/{id}', ['uses' => 'App\Http\Controllers\Admin\UserController@destroy', 'as' => 'admin_user_destroy']);
-
 		$app->get('products', ['uses' => 'App\Http\Controllers\Admin\ProductController@index', 'as' => 'admin_product_index']);
         $app->post('products', ['uses' => 'App\Http\Controllers\Admin\ProductController@create', 'as' => 'admin_product_create']);
 		$app->get('products/{id}', ['uses' => 'App\Http\Controllers\Admin\ProductController@show', 'as' => 'admin_product_show']);
