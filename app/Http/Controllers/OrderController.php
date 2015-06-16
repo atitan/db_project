@@ -65,9 +65,9 @@ class OrderController extends Controller {
         }
 
         if (array_key_exists($id, $cart)) {
-            $cart[$id] += 1;
+            $cart[$id] += intval($quan);
         } else {
-            $cart[$id] = 1;
+            $cart[$id] = intval($quan);
         }
 
         Session::put('cart', $cart);

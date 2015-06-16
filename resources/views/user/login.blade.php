@@ -22,6 +22,9 @@
       <div class="text-right">
         <input type="submit" value="登入" class="btn btn-warning">
       </div>
+      @if ($user)
+        {{ $user->username }} is present.
+      @endif
   </form>
 </div>
 @stop
