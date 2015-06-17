@@ -241,10 +241,10 @@
                 <li class="active"><a href="/">首頁</a></li>
                 <li><a href="/products">商品總覽</a></li>
                 <li><a href="#">購物車&nbsp;<span class="badge">3</span></a></li>
-                <li><a href="/user/signup" class="inline-block">加入會員</a>/<a href="/user/login" class="inline-block">登入</a></li>
-                <li class="dropdown">
+                @if ($user)
+                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    XX，您好！<span class="caret"></span>
+                    {{ $user->username }}，您好！<span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="#">訂單查詢</a></li>
@@ -255,6 +255,9 @@
                     <li><a href="#">登出</a></li>
                   </ul>
                 </li>
+                @else
+                <li><a href="/user/signup" class="inline-block">加入會員</a>/<a href="/user/login" class="inline-block">登入</a></li>
+                @endif
               </ul>
             </div>
           </div>
