@@ -11,9 +11,7 @@
 |
 */
 
-$app->get('/', function() {
-    return view('welcome');
-});
+$app->get('/', ['uses' => 'App\Http\Controllers\WelcomeController@index', 'as' => 'root_index']);
 
 $app->get('/products', ['uses' => 'App\Http\Controllers\ProductController@index', 'as' => 'product_index']);
 
