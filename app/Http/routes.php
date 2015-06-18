@@ -33,6 +33,7 @@ $app->group(['middleware' => 'auth'], function($app)
     $app->put('/orders/{id}', ['uses' => 'App\Http\Controllers\OrderController@update', 'as' => 'order_update']);
     $app->delete('/orders/{id}', ['uses' => 'App\Http\Controllers\OrderController@destroy', 'as' => 'order_destroy']);
 
+    $app->put('/cart/edit', ['uses' => 'App\Http\Controllers\OrderController@cartEdit', 'as' => 'cart_edit']);
     $app->post('/cart/add', ['uses' => 'App\Http\Controllers\OrderController@cartAdd', 'as' => 'cart_add']);
     $app->get('/cart', ['uses' => 'App\Http\Controllers\OrderController@cartReview', 'as' => 'cart_review']);
 
