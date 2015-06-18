@@ -73,7 +73,12 @@
             <a href="#">Apple Watch 101 手錶面盤的設定</a>
           </h3>
           <p>相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <button>Add to cart</button>
+          <form action="/cart/add" method="post">
+            <input type="hidden" name="id" value="1">
+            <input type="hidden" name="quan" value="1">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <button type="submit">Add to cart</button>
+          </form>
         </div>
       </div>
     </div>
@@ -88,7 +93,12 @@
             <a href="#">Apple Watch 101 手錶面盤的設定</a>
           </h3>
           <p>相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <button>Add to cart</button>
+          <form action="/cart/add" method="post">
+            <input type="hidden" name="id" value="2">
+            <input type="hidden" name="quan" value="1">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <button type="submit">Add to cart</button>
+          </form>
         </div>
       </div>
     </div>

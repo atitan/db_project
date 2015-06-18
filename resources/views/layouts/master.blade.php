@@ -252,7 +252,13 @@
                     <li class="divider"></li>
                     <li><a href="#">後台管理系統</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">登出</a></li>
+                    <li>
+                        <form action="/user/logout" method="post">
+                          <input type="hidden" name="_method" value="DELETE">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <button type="submit">登出</button>
+                        </form>
+                    </li>
                   </ul>
                 </li>
                 @else
@@ -282,5 +288,17 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="/javascripts/bootstrap.min.js"></script>
+
+      <script type="text/javascript">
+          function updateTotal(changed) {
+              $(changed).parent().next().next().html($(changed).val()*$(changed).parent().next().html());
+              var total = 0;
+              $('table#shoppingcart tbody').children().each(function(index) {
+                  total += $(this).find("td:eq(3)").children().val()*$(this).find("td:eq(4)").html();
+              });
+
+              $('#total').html(total);
+          }
+      </script>
     </body>
 </html>
