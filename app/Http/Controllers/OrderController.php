@@ -94,8 +94,13 @@ class OrderController extends Controller {
         $quan = $req->input('quan');
 
         if (array_key_exists($id, $cart)) {
-            $cart[$id] = intval($quan);
+             if ($quan == 0) {
+              unset($cart[$id]);
+            } else {
+              $cart[$id] = intval($quan);
+            }
         }
+       
         
         return 'ok';
     }
