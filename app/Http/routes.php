@@ -33,6 +33,7 @@ $app->group(['middleware' => 'auth'], function($app)
     $app->put('/orders/{id}', ['uses' => 'App\Http\Controllers\OrderController@update', 'as' => 'order_update']);
     $app->delete('/orders/{id}', ['uses' => 'App\Http\Controllers\OrderController@destroy', 'as' => 'order_destroy']);
 
+    $app->put('/cart/edit', ['uses' => 'App\Http\Controllers\OrderController@cartEdit', 'as' => 'cart_edit']);
     $app->post('/cart/add', ['uses' => 'App\Http\Controllers\OrderController@cartAdd', 'as' => 'cart_add']);
     $app->get('/cart', ['uses' => 'App\Http\Controllers\OrderController@cartReview', 'as' => 'cart_review']);
 
@@ -44,7 +45,6 @@ $app->group(['middleware' => 'auth'], function($app)
 	{
 		$app->get('products', ['uses' => 'App\Http\Controllers\Admin\ProductController@index', 'as' => 'admin_product_index']);
         $app->post('products', ['uses' => 'App\Http\Controllers\Admin\ProductController@create', 'as' => 'admin_product_create']);
-		$app->get('products/{id}', ['uses' => 'App\Http\Controllers\Admin\ProductController@show', 'as' => 'admin_product_show']);
 		$app->put('products/{id}', ['uses' => 'App\Http\Controllers\Admin\ProductController@update', 'as' => 'admin_product_update']);
 		$app->delete('products/{id}', ['uses' => 'App\Http\Controllers\Admin\ProductController@destroy', 'as' => 'admin_product_destroy']);
 
