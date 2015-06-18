@@ -99,9 +99,11 @@ class OrderController extends Controller {
             } else {
               $cart[$id] = intval($quan);
             }
+        } else {
+            return 'fail';
         }
-       
         
+        Session::put('cart', $cart);
         return 'ok';
     }
 

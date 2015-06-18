@@ -196,6 +196,9 @@
         .nav>li>a.inline-block {
           display: inline-block;
         }
+        .cursor:hover { 
+          cursor: pointer; 
+        }
       </style>
     </head>
     <body>
@@ -240,7 +243,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="/">首頁</a></li>
                 <li><a href="/products">商品總覽</a></li>
-                <li><a href="#">購物車&nbsp;<span class="badge">3</span></a></li>
+                <li><a href="/cart">購物車&nbsp;<span class="badge">3</span></a></li>
                 @if ($user)
                  <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -293,11 +296,48 @@
           function updateTotal(changed) {
               $(changed).parent().next().next().html($(changed).val()*$(changed).parent().next().html());
               var total = 0;
+              $(changed).prev().html($(changed).val());
               $('table#shoppingcart tbody').children().each(function(index) {
-                  total += $(this).find("td:eq(3)").children().val()*$(this).find("td:eq(4)").html();
+                  total += $(this).find("select:eq(0)").val()*$(this).find("td:eq(4)").html();
               });
-
               $('#total').html(total);
+          }
+          function editValue(changed) {
+            $(changed).next().show();
+            $(changed).hide();
+            $(changed).parent().parent().find("select:eq(0)").show();
+            $(changed).parent().parent().find("select:eq(0)").prev().hide();
+
+          }
+          function sendValue(changed) {
+            $(changed).prev().show();
+            $(changed).hide();
+            var id = $(changed).parent().parent().find('td:eq(0)').html();
+            console.log('id = '+id);
+            var quantity =  $(changed).parent().parent().find("select:eq(0)").val();
+            console.log('quantity = '+quantity);
+            $(changed).parent().parent().find("select:eq(0)").hide();
+            $(changed).parent().parent().find("select:eq(0)").prev().show();
+            $.ajax({
+               type: "POST",
+               url: "/cart/edit",
+               data: "id="+id+"&quan="+quantity+"&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
+               success: function(data) {
+                   alert('更新購物車成功。'); // show response from the php script.
+               }
+             });
+          }
+          function deleteCartItem(item) {
+            var id = $(item).parent().parent().find('td:eq(0)').html();
+            console.log("id="+id+"&quan=0&_method=PUT&_token={{ csrf_token() }}");
+            $.ajax({
+               type: "POST",
+               url: "/cart/edit",
+               data: "id="+id+"&quan=0&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
+               success: function(data) {
+                   alert('該物品已成功自購物車中刪除。'); // show response from the php script.
+               }
+             });
           }
       </script>
     </body>
