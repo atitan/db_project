@@ -17,9 +17,9 @@ class CreateOrderDetailsTable extends Migration {
 
             $table->increments('id')->unsigned()->unique();
             $table->integer('order_id')->unsigned();
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 			$table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->integer('quantity')->unsigned();
 			$table->integer('extended_price');
             $table->timestamps();
