@@ -16,6 +16,39 @@ class OrderController extends Controller {
 
     public function create(Request $req)
     {
+        $cart = Session::get('cart', []);
+        
+        if (empty($cart)) {
+            abort(404);
+        }
+
+        $this->validate($req, [
+            'contact' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+
+        $ids = implode( ',', array_keys($cart));
+        $products = DB::select('select * from products where id in('.$ids.')');
+
+        $total = 0;
+        foreach ($products as $product) {
+            $total += $product->price * $cart[$product->id];
+        }
+
+        $order = DB::insert(
+            'insert into orders (contact, phone, address, total, user_id) values (?, ?, ?, ?, ?)',
+            [$req->input('contact'), $req->input('phone'), $req->input('address'), $total, Session::get('user')->id]
+        );
+
+        foreach ($products as $product) {
+            $ext_price = $product->price * $cart[$product->id];
+            DB::insert(
+                'insert into order_details (order_id, product_id, quantity, extended_price) values (?, ?, ?, ?)',
+                [$order->id, $product->id, $cart[$product->id], $ext_price]
+            );
+        }
+
         return redirect()->route('order_show', ['id' => $id]);
     }
 
@@ -52,6 +85,19 @@ class OrderController extends Controller {
         $ids = implode( ',', array_keys($cart));
 		$products = DB::select('select * from products where id in('.$ids.')');
         return view('cart', ['products' => $products, 'cart' => $cart]);
+    }
+
+    public function cartEdit(Request $req)
+    {
+        $cart = Session::get('cart', []);
+        $id = $req->input('id');
+        $quan = $req->input('quan');
+
+        if (array_key_exists($id, $cart)) {
+            $cart[$id] = intval($quan);
+        }
+        
+        return 'ok';
     }
 
     public function cartAdd(Request $req)
