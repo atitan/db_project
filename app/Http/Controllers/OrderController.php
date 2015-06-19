@@ -41,15 +41,17 @@ class OrderController extends Controller {
             [$req->input('contact'), $req->input('phone'), $req->input('address'), $total, Session::get('user')->id]
         );
 
+        $orderID = DB::getPdo()->lastInsertId();
+
         foreach ($products as $product) {
             $ext_price = $product->price * $cart[$product->id];
             DB::insert(
                 'insert into order_details (order_id, product_id, quantity, extended_price) values (?, ?, ?, ?)',
-                [$order->id, $product->id, $cart[$product->id], $ext_price]
+                [$orderID, $product->id, $cart[$product->id], $ext_price]
             );
         }
 
-        return redirect()->route('order_show', ['id' => $id]);
+        return redirect()->route('order_show', ['id' => $orderID]);
     }
 
     public function show($id)
