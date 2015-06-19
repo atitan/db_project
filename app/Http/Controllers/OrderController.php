@@ -83,7 +83,13 @@ class OrderController extends Controller {
     {
         $cart = Session::get('cart', []);
         $ids = implode( ',', array_keys($cart));
-		$products = DB::select('select * from products where id in('.$ids.')');
+
+        if (empty($cart)) {
+            $products = [];
+        } else {
+            $products = DB::select('select * from products where id in('.$ids.')');
+        }
+        
         return view('cart', ['products' => $products, 'cart' => $cart]);
     }
 
