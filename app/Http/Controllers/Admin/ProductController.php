@@ -15,7 +15,7 @@ class ProductController extends Controller {
     public function create(Request $req)
     {
         $product = DB::insert(
-            'insert into products (name, price, availability, description, img_path) values (?, ?, ?, ?, ?)',
+            'insert into products (name, price, availability, description, img_path values (?, ?, ?, ?, ?)',
             [$req->input('name'), intval($req->input('price')), intval($req->input('availability')), $req->input('description'), $req->input('img_path')]
         );
 
@@ -31,7 +31,7 @@ class ProductController extends Controller {
         }
 
         $product = DB::update(
-            'update products set name=?, price=?, availability=?, description=?, img_path=?) where id = ?',
+            'update products set name=?, price=?, availability=?, description=?, img_path=? where id = ?',
             [$req->input('name'), intval($req->input('price')), intval($req->input('availability')), $req->input('description'), $req->input('img_path'), $id]
         );
 
