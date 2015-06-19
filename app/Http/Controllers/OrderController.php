@@ -36,20 +36,25 @@ class OrderController extends Controller {
             $total += $product->price * $cart[$product->id];
         }
 
-        $order = DB::insert(
-            'insert into orders (contact, phone, address, total, user_id) values (?, ?, ?, ?, ?)',
-            [$req->input('contact'), $req->input('phone'), $req->input('address'), $total, Session::get('user')->id]
-        );
-
-        $orderID = DB::getPdo()->lastInsertId();
-
-        foreach ($products as $product) {
-            $ext_price = $product->price * $cart[$product->id];
-            DB::insert(
-                'insert into order_details (order_id, product_id, quantity, extended_price) values (?, ?, ?, ?)',
-                [$orderID, $product->id, $cart[$product->id], $ext_price]
+        DB::transaction(function()use($req) {
+            $order = DB::insert(
+                'insert into orders (contact, phone, address, total, user_id) values (?, ?, ?, ?, ?)',
+                [$req->input('contact'), $req->input('phone'), $req->input('address'), $total, Session::get('user')->id]
             );
-        }
+            $orderID = DB::getPdo()->lastInsertId();
+            foreach ($products as $product) {
+                $ext_price = $product->price * $cart[$product->id];
+                DB::insert(
+                    'insert into order_details (order_id, product_id, quantity, extended_price) values (?, ?, ?, ?)',
+                    [$orderID, $product->id, $cart[$product->id], $ext_price]
+                );
+                DB::update(
+                    'update products set availability = ? where id = ?', 
+                    [($product->availability - $cart[$product->id]), $product->id]
+                );
+            }
+        });
+
 
         return redirect()->route('order_show', ['id' => $orderID]);
     }
