@@ -37,11 +37,11 @@ class OrderController extends Controller {
         }
 
         DB::transaction(function()use($req) {
-            $order = DB::insert(
+            $orderID = DB::insertGetId(
                 'insert into orders (contact, phone, address, total, user_id) values (?, ?, ?, ?, ?)',
                 [$req->input('contact'), $req->input('phone'), $req->input('address'), $total, Session::get('user')->id]
             );
-            $orderID = DB::getPdo()->lastInsertId();
+            
             foreach ($products as $product) {
                 $ext_price = $product->price * $cart[$product->id];
                 DB::insert(
