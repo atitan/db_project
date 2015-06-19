@@ -85,7 +85,8 @@
           margin-top: 0;
         }
         .v-margin-md {
-          margin: 20px 0;
+          margin-top: 20px;
+          margin-bottom: 20px;
         }
 
         /* Hr Style */
@@ -309,7 +310,7 @@
             $(changed).parent().parent().find("select:eq(0)").prev().hide();
 
           }
-          function sendValue(changed) {
+          function confirmValue(changed) {
             $(changed).prev().show();
             $(changed).hide();
             var id = $(changed).parent().parent().find('td:eq(0)').html();
@@ -318,26 +319,44 @@
             console.log('quantity = '+quantity);
             $(changed).parent().parent().find("select:eq(0)").hide();
             $(changed).parent().parent().find("select:eq(0)").prev().show();
-            $.ajax({
-               type: "POST",
-               url: "/cart/edit",
-               data: "id="+id+"&quan="+quantity+"&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
-               success: function(data) {
-                   alert('更新購物車成功。'); // show response from the php script.
-               }
-             });
+            editCart(id, quantity);
           }
           function deleteCartItem(item) {
             var id = $(item).parent().parent().find('td:eq(0)').html();
+
             console.log("id="+id+"&quan=0&_method=PUT&_token={{ csrf_token() }}");
-            $.ajax({
+            editCart(id, 0);
+          }
+          function editCart(id, quan) {
+              if (quan != 0) {
+                $.ajax({
+                  type: "POST",
+                  url: "/cart/edit",
+                  data: "id="+id+"&quan="+quan+"&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
+                  success: function(data) {
+                      alert('更新購物車成功。'); // show response from the php script.
+                  }
+               });
+              } else {
+                $.ajax({
+                  type: "POST",
+                  url: "/cart/edit",
+                  data: "id="+id+"&quan="+quan+"&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
+                  success: function(data) {
+                      alert('該筆項目已從購物車中刪除。'); // show response from the php script.
+                  }
+               });
+              }
+          }
+          function addToCart(id) {
+             $.ajax({
                type: "POST",
-               url: "/cart/edit",
-               data: "id="+id+"&quan=0&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
+               url: "/cart/add",
+               data: "id="+id+"&quan=1&_token={{ csrf_token() }}", // serializes the form's elements.
                success: function(data) {
-                   alert('該物品已成功自購物車中刪除。'); // show response from the php script.
+                   alert('該筆項目已成功新增至購物車。'); // show response from the php script.
                }
-             });
+            });
           }
       </script>
     </body>

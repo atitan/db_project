@@ -46,7 +46,7 @@
 				<td class="text-right">{{ $product->price*$cart[$product->id] }}</td>
 				<td class="text-center">
 				<a onclick="editValue(this)" class="cursor" style="margin-right: 8px;"><span class="fa fa-pencil"> 編輯</span></a>
-				<a onclick="sendValue(this)" class="cursor"  style="margin-right: 8px; display: none;"><span class="fa fa-check"> 確認</span></a>
+				<a onclick="confirmValue(this)" class="cursor"  style="margin-right: 8px; display: none;"><span class="fa fa-check"> 確認</span></a>
 				<a onclick="deleteCartItem(this)" class="cursor"><span class="fa fa-trash-o"> 刪除</span></a></span></td>
 			</tr>
 		@endforeach
@@ -64,14 +64,30 @@
 					?>
 				</td>
 			</tr>
-			<tr >
-				<td colspan="3"></td>
-				<td colspan="4" class="text-right">
-					<button class="btn btn-default">繼續選購</button>  <button class="btn btn-danger">帶我結帳去</button>
-				</td>
-			</tr>
 		</tfoot>
 	</table>
+	<hr>
+	<div class="col-lg-offset-8 col-lg-4">
+		<form action="/orders" method="POST">
+			<div class="input-group v-margin-md">
+			  <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+			  <input type="text" name="contact" class="form-control" placeholder="收件人">
+			</div>
+			<div class="input-group v-margin-md">
+			  <span class="input-group-addon"><i class="fa fa-mobile fa-fw"></i></span>
+			  <input type="text" name="phone" class="form-control" placeholder="連絡電話">
+			</div>
+			<div class="input-group v-margin-md">
+			  <span class="input-group-addon"><i class="fa fa fa-home fa-fw"></i></span>
+			  <input type="text" name="address" class="form-control" placeholder="地址">
+			</div>
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<div class="text-right v-margin-md">
+				<a href="/products" class="btn btn-default">繼續選購</a>  <button type="submit" class="btn btn-danger">帶我結帳去</button>
+			</div>
+		</form>
+	</div>
+	
 
 @stop
 
