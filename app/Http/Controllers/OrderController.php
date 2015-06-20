@@ -77,7 +77,7 @@ class OrderController extends Controller {
             'update orders set contact = ?, phone = ?, address = ? where id = ? and user_id = ?',
             [$req->input('contact'), $req->input('phone'), $req->input('address'), $id, Session::get('user')->id]
         );
-        return redirect()->route('order_show', ['id' => $order->id]);
+        return redirect()->route('order_show', ['id' => $id]);
     }
 
     public function destroy($id)
