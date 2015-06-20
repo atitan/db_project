@@ -14,7 +14,7 @@ class OrderController extends Controller {
 
     public function show($id)
     {
-        $order = DB::select('select * from orders inner join order_details on orders.id=order_details.order_id and orders.id=?', [$id]);
+        $order = DB::select('select * from orders o inner join order_details od on o.id=od.order_id where o.id=?', [$id]);
         return view('admin.order', ['order' => $order]);
     }
 
