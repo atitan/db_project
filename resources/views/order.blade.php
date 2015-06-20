@@ -48,8 +48,6 @@
         </td>
       </tr>
     </tbody>
-    <tbody>
-    </tbody>
   </table>
   <div id="orderDetails" class="panel-collapse collapse" role="tabpanel" aria-labelledby="orderDetails">
     <div class="panel-body">
