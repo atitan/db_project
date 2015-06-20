@@ -200,6 +200,9 @@
         .cursor:hover { 
           cursor: pointer; 
         }
+        #orderDetails table td {
+          vertical-align: middle;
+        }
       </style>
     </head>
     <body>
@@ -358,6 +361,61 @@
                }
             });
           }
+          function editOrder(item) {
+            $(item).next().show();
+            $(item).hide();
+            var record = $(item).parent().parent();
+            $(record).find('input[name$="contact"]').show();
+            $(record).find('input[name$="phone"]').show();
+            $(record).find('input[name$="address"]').show();
+            $(record).find('span.j-contact').hide();
+            $(record).find('span.j-phone').hide();
+            $(record).find('span.j-address').hide();
+          }
+          function confirmEditOrder(item) {
+            $(item).prev().show();
+            $(item).hide();
+            var record       = $(item).parent().parent();
+            var id           = $(record).find('span.j-orderid').html();
+            var contactInput = $(record).find('input[name$="contact"]');
+            var contactValue = $(record).find('span.j-contact');
+            var phoneInput   = $(record).find('input[name$="phone"]');
+            var phoneValue   = $(record).find('span.j-phone');
+            var addressInput = $(record).find('input[name$="address"]');
+            var addressValue = $(record).find('span.j-address');
+            $(contactValue).html($(contactInput).val()).show();
+            $(phoneValue).html($(phoneInput).val()).show();
+            $(addressValue).html($(addressInput).val()).show();
+            $(contactInput).hide();
+            $(phoneInput).hide();
+            $(addressInput).hide();
+            updateOrder(id, contactInput.val(), phoneInput.val(), addressInput.val());
+          }
+          function updateOrder(id, contact, phone, address) {
+          var token = "{{ csrf_token() }}";
+          $.ajax({
+            type: "POST",
+            url:  "/orders/"+id,
+            data: "contact="+contact+"&phone="+phone+"&address="+address+"&_method=PUT&_token="+token,
+            success: function(data) {
+              alert('您的訂單資料已成功更新。');
+            }
+          });
+        }
+        function deleteOrder(item) {
+          var record = $(item).parent().parent();
+          var id     = $(record).find('span.j-orderid').html();
+          var token  = "{{ csrf_token() }}";
+          $.ajax({
+            type: "POST",
+            url:  "/orders/"+id,
+            data: "_method=DELETE&_token="+token,
+            success: function(data) {
+              alert('該筆訂單資料已成功刪除。');
+              location.href = '/orders/'+id;
+            }
+          });
+        }
       </script>
     </body>
 </html>
