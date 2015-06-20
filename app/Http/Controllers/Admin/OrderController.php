@@ -18,7 +18,7 @@ class OrderController extends Controller {
         return view('admin.order', ['order' => $order]);
     }
 
-    public function update($id)
+    public function update(Request $req, $id)
     {
         $order = DB::select('select * from orders where id = ?', [$id]);
 
