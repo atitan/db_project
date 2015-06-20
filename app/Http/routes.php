@@ -44,7 +44,7 @@ $app->group(['middleware' => 'auth'], function($app)
 	$app->group(['prefix' => 'admin', 'middleware' => 'admin'], function($app)
 	{
 		$app->get('products', ['uses' => 'App\Http\Controllers\Admin\ProductController@index', 'as' => 'admin_product_index']);
-        $app->post('products', ['uses' => 'App\Http\Controllers\Admin\ProductController@create', 'as' => 'admin_product_create']);
+    $app->post('products', ['uses' => 'App\Http\Controllers\Admin\ProductController@create', 'as' => 'admin_product_create']);
 		$app->put('products/{id}', ['uses' => 'App\Http\Controllers\Admin\ProductController@update', 'as' => 'admin_product_update']);
 		$app->delete('products/{id}', ['uses' => 'App\Http\Controllers\Admin\ProductController@destroy', 'as' => 'admin_product_destroy']);
 

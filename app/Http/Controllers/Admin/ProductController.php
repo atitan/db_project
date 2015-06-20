@@ -19,9 +19,7 @@ class ProductController extends Controller {
             [$req->input('name'), intval($req->input('price')), intval($req->input('availability')), $req->input('description'), $req->input('img_path')]
         );
 
-        $products = DB::select('select * from products');
-        return view('admin.products', ['products' => $products]);
-        // return 'ok';
+        return 'ok';
     }
 
     public function update(Request $req, $id)

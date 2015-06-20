@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@yield('title')</title>
+    <title>後臺管理介面｜@yield('title')</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
   	<!-- Optional theme -->
     <link href="/stylesheets/sb-admin-2.css" rel="stylesheet">
@@ -30,6 +30,18 @@
 		.cursor:hover {
 			cursor: pointer;
 		}
+        .v-margin-md {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+        .b-margin-md {
+          margin-bottom: 20px;
+        }
+        .input-group[class*="col-"] {
+            float: left;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
 	</style>
 </head>
 
@@ -310,6 +322,23 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="/javascripts/metisMenu.min.js"></script>
    <script type="text/javascript">
+      function addNewProduct(item) {
+        var name         = $('#newProductName').val();
+        var price        = $('#newProductPrice').val();
+        var availability = $('#newProductAvailability').val();
+        var description  = $('#newProductDescription').val();
+        var img_path     = $('#newProductImg_path').val();
+        var token        = '{{ csrf_token() }}';
+        $.ajax({
+          type: "POST",
+          url:  "/admin/products",
+          data: "name="+name+"&price="+price+"&availability="+availability+"&description="+description+"&img_path="+img_path+"&_token="+token, // serializes the form's elements.
+          success: function(data) {
+            alert('產品新增成功。'); // show response from the php script.
+            location.href = '/admin/products';
+          }
+        });
+      }
    		function editProduct (item) {
    			$(item).next().show();
    			$(item).hide();
@@ -362,6 +391,15 @@
                    location.href = '/admin/products';
                }
             });
+        }
+        function editOrder(item) {
+            $(item).hide();
+            $(item).next().show();
+
+        }
+        function confirmEditOrder(item) {
+            $(item).hide();
+            $(item).prev().show();
         }
    </script>
 

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', '後臺管理介面｜商品管理')
+@section('title', '商品管理')
 
 @section('content')
 	<h2>商品管理</h2>
@@ -8,15 +8,32 @@
 	  <div class="panel-heading">新增商品</div>
 	  <div class="panel-body">
 	    <form action="/admin/products" method="POST">
-	    	<input type="text" name="name" placeholder="商品名稱">		
-	    	<input type="text" name="description" placeholder="商品描述">
-	    	<input type="text" name="price" placeholder="商品價格 NT$." style="text-align: right;">
-	    	<input type="text" name="availability" placeholder="商品庫存">
-	    	<input type="text" name="img_path" placeholder="圖片連結">
-	    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	    	<button class="btn btn-sm btn-success">儲存</button>
-	    	<button class="btn btn-sm btn-default">重設</button>
+            <div class="row">
+                <div class="input-group col-md-4 b-margin-md">
+                    <span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
+                    <input type="text" id="newProductName" name="name" class="form-control" placeholder="商品名稱">
+                </div>
+                <div class="input-group col-md-4 b-margin-md">
+                    <span class="input-group-addon r-margin-sm"><i class="fa fa-usd fa-fw"></i></span>
+                    <input type="text" name="price" id="newProductPrice" placeholder="商品價格" class="form-control" style="text-align: right;">
+                </div>
+                <div class="input-group col-md-4 b-margin-md">
+                    <span class="input-group-addon r-margin-sm"><i class="fa fa-archive fa-fw"></i></span>
+                    <input type="text" name="availability" id="newProductAvailability" placeholder="商品庫存" class="form-control">
+                </div>
+                <div class="input-group col-lg-12 b-margin-md">
+                    <span class="input-group-addon"><i class="fa fa-picture-o fa-fw"></i></span>
+                    <input type="text" name="img_path" id="newProductImg_path" placeholder="圖片連結" class="form-control col-lg-12">
+                </div>
+                <div class="input-group col-xs-12 b-margin-md">
+                    <textarea name="description" id="newProductDescription" placeholder="商品描述" class="form-control"></textarea>
+                </div>
+            </div>
 	    </form>
+			<div class="input-group col-md-12 text-right">
+				<button onclick="addNewProduct(this)" class="btn btn-sm btn-success">儲存</button>
+				<button type="reset" class="btn btn-sm btn-default">重設</button>
+			</div>
 	  </div>
 	</div>
 	<div class="panel panel-warning">
@@ -71,5 +88,5 @@
     	</table>
 	  </div>
 	</div>
-	
+
 @stop
