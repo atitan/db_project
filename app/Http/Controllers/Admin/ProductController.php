@@ -15,11 +15,13 @@ class ProductController extends Controller {
     public function create(Request $req)
     {
         $product = DB::insert(
-            'insert into products (name, price, availability, description, img_path values (?, ?, ?, ?, ?)',
+            'insert into products (name, price, availability, description, img_path) values (?, ?, ?, ?, ?)',
             [$req->input('name'), intval($req->input('price')), intval($req->input('availability')), $req->input('description'), $req->input('img_path')]
         );
 
-        return 'ok';
+        $products = DB::select('select * from products');
+        return view('admin.products', ['products' => $products]);
+        // return 'ok';
     }
 
     public function update(Request $req, $id)
