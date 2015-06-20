@@ -42,6 +42,9 @@
             padding-left: 15px;
             padding-right: 15px;
         }
+         #orderDetails table td {
+            vertical-align: middle;
+        }
 	</style>
 </head>
 
