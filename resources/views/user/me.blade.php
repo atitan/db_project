@@ -1,0 +1,37 @@
+@extends('layouts.master')
+
+@section('title', '個人資料管理')
+
+@section('content')
+	<div class="col-md-12 clearfix  t-margin-lg">
+		<div class="col-md-6 col-md-push-3 text-right">
+			<button onclick="editUserData(this)" class="btn btn-success">修改資料</button>
+			<button onclick="cancelEditUserData(this)" class="btn btn-default" style="display: none;">取消</button>
+		</div>
+	</div>
+	<div class="col-md-6 col-md-push-3 v-margin-md">
+	  <form method="post">
+	      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+	      <div class="input-group v-margin-md">
+	        <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+	        <input class="form-control" type="text" name="username" placeholder="Username" value="{{ $user->username }}" readonly>
+	      </div>
+	      <div class="input-group v-margin-md">
+	        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+	        <input class="form-control" type="text" name="email" placeholder="Email address" value="{{ $user->email }}" readonly>
+	      </div>
+	      <div class="input-group v-margin-md j-password" style="display: none;">
+	        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+	        <input class="form-control" type="password" name="password" placeholder="Password">
+	      </div>
+	      <div class="input-group v-margin-md j-repassword" style="display: none;">
+	        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+	        <input class="form-control" type="password" name="retype-password" placeholder="Retype Password">
+	      </div>
+	      <div class="text-right">
+	      	<button type="button" class="btn btn-warning j-submit" onclick="updateUserData(this)" style="display: none;">更新資料</button>
+	        <input type="reset" value="清空" class="btn btn-default" style="display: none;">
+	      </div>
+	  </form>
+	 </div>
+@stop

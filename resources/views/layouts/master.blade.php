@@ -88,6 +88,9 @@
           margin-top: 20px;
           margin-bottom: 20px;
         }
+        .t-margin-lg {
+          margin-top: 40px;
+        }
 
         /* Hr Style */
         /* Gradient transparent - color - transparent */
@@ -254,17 +257,15 @@
                     {{ $user->username }}，您好！<span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">訂單查詢</a></li>
-                    <li><a href="#">會員資料更新</a></li>
+                    <li><a href="/orders">訂單查詢</a></li>
+                    <li><a href="/me">會員資料更新</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">後台管理系統</a></li>
-                    <li class="divider"></li>
+                    @if( $user->is_admin == '1' )
+                      <li><a href="/admin/orders">後台管理系統</a></li>
+                      <li class="divider"></li>
+                    @endif
                     <li>
-                        <form action="/user/logout" method="post">
-                          <input type="hidden" name="_method" value="DELETE">
-                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                          <button type="submit">登出</button>
-                        </form>
+                        <a class="cursor" onclick="userLogout()">登出</a>
                     </li>
                   </ul>
                 </li>
@@ -413,6 +414,48 @@
             success: function(data) {
               alert('該筆訂單資料已成功刪除。');
               location.href = '/orders';
+            }
+          });
+        }
+        function editUserData(item) {
+          $(item).hide();
+          $(item).next().show();
+          $('div.j-password').show();
+          $('div.j-repassword').show();
+          $('button.j-submit').show();
+          $('input[type$="reset"]').show();
+        }
+        function cancelEditUserData(item) {
+          $(item).hide();
+          $(item).prev().show();
+          $('input[name$="password"]').val("");
+          $('input[name$="retype-password"]').val("");
+          $('div.j-password').hide();
+          $('div.j-repassword').hide();
+          $('button.jsubmit').hide();
+          $('input[type$="reset"]').hide();
+
+        }
+        function updateUserData(item) {
+          var password = $('input[name$="password"]').val();
+          var token    = "{{ csrf_token() }}";
+          $.ajax({
+            type: "POST",
+            url:  "/me",
+            data: "password="+password+"&_method=PUT&_token="+token,
+            success: function(data) {
+              alert('您的密碼已更新。');
+
+            }
+          });
+        }
+        function userLogout() {
+          $.ajax({
+            type: "POST",
+            url:  "/user/logout",
+            data: "_method=DELETE&_token={{ csrf_token() }}",
+            success: function(data) {
+              alert('已登出。');
             }
           });
         }
