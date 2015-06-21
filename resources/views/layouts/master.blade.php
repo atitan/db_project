@@ -412,7 +412,7 @@
             data: "_method=DELETE&_token="+token,
             success: function(data) {
               alert('該筆訂單資料已成功刪除。');
-              location.href = '/orders/'+id;
+              location.href = '/orders';
             }
           });
         }
