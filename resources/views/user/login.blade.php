@@ -9,15 +9,35 @@
 @section('content')
 
 <div class="col-md-6 col-md-push-3 v-margin-100">
-  <form method="post" action="/user/login">
+  <form method="post" action="/user/login" novalidate>
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      <div class="input-group v-margin-md">
-        <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-        <input class="form-control" type="text" name="username" placeholder="Username">
+      <div class="v-margin-md control-group">
+        <i class="fa fa-user fa-fw"></i><label class="control-label" for="username">Username</label>
+        <div class="controls">
+          <input 
+            id="username"
+            class="form-control" 
+            type="text" 
+            name="username" 
+            placeholder="Username" 
+            required
+          />
+          <p class="help-block" style="color: #ff0000"></p>
+        </div>
       </div>
-      <div class="input-group v-margin-md">
-        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-        <input class="form-control" type="password" name="password" placeholder="Password">
+      <div class="v-margin-md control-group">
+        <i class="fa fa-key fa-fw"></i><label class="control-label" for="password">Password</label>
+        <div class="controls">
+          <input 
+            id="password" 
+            class="form-control" 
+            type="password" 
+            name="password" 
+            placeholder="Password" 
+            required
+          />
+          <p class="help-block" style="color: #ff0000"></p>
+        </div>
       </div>
       <div class="text-right">
         <input type="submit" value="登入" class="btn btn-warning">

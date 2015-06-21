@@ -68,19 +68,63 @@
 	</table>
 	<hr>
 	<div class="col-lg-offset-8 col-lg-4">
-		<form action="/orders" method="POST">
-			<div class="input-group v-margin-md">
+		<form action="/orders" method="POST" novalidate>
+			<div class="v-margin-md control-group">
+				<i class="fa fa-user fa-fw"></i><label class="control-label" for="contact">收件人</label>
+				<div class="controls">
+					<input 
+						id="contact"
+						class="form-control" 
+						type="text" 
+						name="contact" 
+						placeholder="收件人" 
+						required
+					/>
+					<p class="help-block" style="color: #ff0000"></p>
+				</div>
+			</div>
+			<div class="v-margin-md control-group">
+				<i class="fa fa-mobile fa-fw"></i><label class="control-label" for="phone">連絡電話</label>
+				<div class="controls">
+					<input 
+						id="phone"
+						class="form-control" 
+						type="text" 
+						name="phone" 
+						placeholder="連絡電話" 
+						data-validation-regex-regex="([0-9]{10})|(\([0-9]{3}\)\s+[0-9]{3}\-[0-9]{4})" 
+        				data-validation-regex-message="Not a valid phone number" 
+						required
+					/>
+					<p class="help-block" style="color: #ff0000"></p>
+				</div>
+			</div>
+			<div class="v-margin-md control-group">
+				<i class="fa fa-home fa-fw"></i><label class="control-label" for="address">地址</label>
+				<div class="controls">
+					<input 
+						id="address"
+						class="form-control" 
+						type="text" 
+						name="address" 
+						placeholder="地址" 
+						required
+					/>
+					<p class="help-block" style="color: #ff0000"></p>
+				</div>
+			</div>
+			{{-- <div class="input-group v-margin-md">
 			  <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 			  <input type="text" name="contact" class="form-control" placeholder="收件人">
-			</div>
-			<div class="input-group v-margin-md">
+			</div> --}}
+			{{-- <div class="input-group v-margin-md">
 			  <span class="input-group-addon"><i class="fa fa-mobile fa-fw"></i></span>
 			  <input type="text" name="phone" class="form-control" placeholder="連絡電話">
 			</div>
 			<div class="input-group v-margin-md">
 			  <span class="input-group-addon"><i class="fa fa fa-home fa-fw"></i></span>
 			  <input type="text" name="address" class="form-control" placeholder="地址">
-			</div>
+			</div> --}}
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="text-right v-margin-md">
 				<a href="/products" class="btn btn-default">繼續選購</a>  <button type="submit" class="btn btn-danger">帶我結帳去</button>
