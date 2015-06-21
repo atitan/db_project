@@ -28,7 +28,7 @@ class OrderController extends Controller {
 
         $order = DB::update(
             'update orders set contact = ?, phone = ?, address = ?, updated_at=? where id = ?',
-            [$req->input('contact'), $req->input('phone'), $req->input('address'), (new DateTime())->format('c'), $id]
+            [$req->input('contact'), $req->input('phone'), $req->input('address'), (new \DateTime())->format('c'), $id]
         );
 
         return 'ok';
