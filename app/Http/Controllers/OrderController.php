@@ -55,6 +55,7 @@ class OrderController extends Controller {
           );
         }
 
+        Session::put('cart', []);
 
         return redirect()->route('order_show', ['id' => $orderID]);
     }
@@ -97,7 +98,7 @@ class OrderController extends Controller {
             $products = DB::select('select * from products where id in('.$ids.')');
         }
 
-        return view('cart', ['products' => $products, 'cart' => $cart]);
+        return view('cart', ['products' => $products]);
     }
 
     public function cartEdit(Request $req)

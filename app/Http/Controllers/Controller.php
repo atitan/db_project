@@ -10,5 +10,7 @@ class Controller extends BaseController
     {
         $user = Session::get('user', null);
         View::share('user', $user);
+        $cart = Session::get('cart', []);
+        View::share('cart', $cart);
     }
 }
