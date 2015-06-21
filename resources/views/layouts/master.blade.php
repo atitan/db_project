@@ -627,7 +627,7 @@
             url:  "/user/logout",
             data: "_method=DELETE&_token={{ csrf_token() }}",
             success: function(data) {
-              alert('已登出。');
+              location.href = '/';
             }
           });
         }
