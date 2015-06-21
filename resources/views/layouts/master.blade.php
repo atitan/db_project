@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta http-eqiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>App Name - @yield('title')</title>
+      <title>還沒想好名字</title>
       <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
       <!-- Optional theme -->
       <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-theme.min.css">
@@ -31,6 +31,9 @@
         a:focus {
           color: #00796B;
           text-decoration: none;
+        }
+        a:focus {
+          outline: none;
         }
         .img-logo {
           display: inline-block;
@@ -66,6 +69,10 @@
         	border-radius: 50%;
         	padding: 32px 30px 26px 30px;
         	min-width:80px;
+        }
+        .icon-round:hover{
+          color: #009688;
+          border-color: #009688;
         }
         .icon-round,.icon-md,.icon-square.icon-md,.icon-rounded.icon-md{
         	min-width: 92px;
@@ -129,12 +136,17 @@
           background-color: #fff;
           border: 1px solid #00796B;
           padding: 10px 10px 30px;
-          margin: 30px 0;
+          margin: 50px 0;
         }
         .l-product-content > h3 {
           color: #212121;
-          min-height: 38px;
           margin: 15px 0;
+          -webkit-line-clamp: 2;  /* 第 2 行要顯示點點點 */
+          /* height = font-size(18) * line-height(1.1) * line-clamp(2) + padding-top */
+          height: 39px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-box-orient: vertical;
         }
 
         .l-product-content > p {
@@ -171,7 +183,7 @@
           color: #fff;
           border-radius: 3px;
           border: none;
-          padding: 10px 15px;
+          padding: 10px;
         }
         .l-product button:hover {
           background-color: #00796B;
@@ -206,6 +218,159 @@
         #orderDetails table td {
           vertical-align: middle;
         }
+
+        /* Navbar, Footer Style */
+
+        .navbar-default,
+        footer {
+          background-color: #009688;
+          background-image: none;
+          border: none;
+          color: #fff;
+        }
+
+          .navbar-default:hover {
+            color: #E0F2F1;
+          }
+
+          footer a {
+            color: #fff;
+            text-shadow: none;
+            border-bottom: 1px #E0F2F1 dotted;
+          }
+
+          .navbar-default .navbar-toggle {
+            background-color: #e3e3e3;
+            border: none;
+          }
+
+          .navbar-default .navbar-nav>li>a,
+          .navbar-default .navbar-nav>li>a:focus {
+            color: #fff;
+            text-shadow: none;
+          }
+            .navbar-default .navbar-nav>li>a:hover {
+              color: #E0F2F1;
+            }
+
+          .navbar-default .navbar-nav>.open>a,
+          .navbar-default .navbar-nav>.open>a:hover,
+          .navbar-default .navbar-nav>.open>a:focus,
+          .dropdown-menu>li>a:hover,
+          .dropdown-menu>li>a:focus {
+            background-color: #00897B;
+            background-image: none;
+            color: #fff;
+          }
+
+          .dropdown-menu,
+          .dropdown-menu>li>a {
+            background-color: #009688;
+            background-image: none;
+            border: none;
+            color: #fff;
+            border-radius: 0;
+          }
+
+          .navbar-default .navbar-brand {
+            color: #fff;
+            text-shadow: none;
+          }
+
+            .navbar-default .navbar-brand:hover {
+              color: #E0F2F1;
+            }
+
+        /* Cover Image style */
+        .cover-image {
+          background: url('../img/cycu.jpg') center 10% no-repeat;
+        }
+        .cover {
+          min-height: 90vh;
+          background-color: rgba(255, 249, 196, 0.3);
+          background-image: url('../img/mask.png');
+        }
+        .cover h1 {
+          color: #fff;
+          padding-top: 10%;
+        }
+
+        .wrap {
+          min-height: 100vh;
+        }
+        /* General link styles */
+        .link {
+          outline: none;
+          position: relative;
+          font-size: 8em;
+          line-height: 1;
+          color: #fff;
+          display: inline-block;
+        }
+        /* Takiri */
+        .link--takiri {
+          font-style: italic;
+          text-decoration: none;
+          font-weight: 700;
+          font-size: 7em;
+          padding: 0 10px 20px;
+          -webkit-transition: color 0.5s;
+          transition: color 0.5s;
+        }
+        .link--takiri:hover {
+          color: #212121;
+          text-decoration: none;
+        }
+        .link--takiri:focus {
+          color: #1e1a1b;
+          text-decoration: none;
+        }
+        .link--takiri::before {
+          content: '';
+          position: absolute;
+          height: 36px;
+          width: 120%;
+          top: 50%;
+          margin-top: -18px;
+          left: -10%;
+          z-index: -1;
+          background: #F9F9F9;
+          -webkit-transform: rotate3d(0,0,1,45deg) scale3d(0,1,1);
+          transform: rotate3d(0,0,1,45deg) scale3d(0,1,1);
+          -webkit-transition: -webkit-transform 0.5s;
+          transition: transform 0.5s;
+        }
+        .link--takiri:hover::before {
+          -webkit-transform: rotate3d(0,0,1,45deg) scale3d(1,1,1);
+          transform: rotate3d(0,0,1,45deg) scale3d(1,1,1);
+        }
+        .link--takiri span {
+          font-size: 20%;
+          font-weight: 400;
+          position: absolute;
+          right: 15px;
+          color: #e53369;
+          bottom: 0;
+          opacity: 0;
+          -webkit-transform: translate3d(-10px,-10px,0);
+          transform: translate3d(-10px,-10px,0);
+          -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+          transition: transform 0.5s, opacity 0.5s;
+        }
+        .link--takiri:hover span {
+          opacity: 1;
+          -webkit-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0);
+        }
+        @media screen and (max-width: 42em) {
+          .link--takiri { 
+            font-size: 3.5em; 
+          }
+        }
+
+        .grid__item>a {
+          top: 40vh;
+        }
       </style>
     </head>
     <body>
@@ -220,7 +385,9 @@
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand navbar-inline" href="/">
-                <img src="../img/Logo.png" class="img-responsive img-logo" alt="Brand" />購物商場
+                <i class="fa fa-flag"></i>
+                {{-- <img src="../img/Logo.png" class="img-responsive img-logo" alt="Brand" /> --}}
+                還沒想好名字
               </a>
             </div>
 
@@ -248,9 +415,9 @@
                 <button type="submit" class="btn btn-default">Submit</button>
               </form> -->
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">首頁</a></li>
+                <li><a href="/">首頁</a></li>
                 <li><a href="/products">商品總覽</a></li>
-                <li><a href="/cart">購物車&nbsp;<span class="badge">3</span></a></li>
+                <li><a href="/cart">購物車</a></li>
                 @if ($user)
                  <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -281,7 +448,7 @@
       @section('sidebar')
       @show
 
-      <div class="container">
+      <div class="container wrap">
           @yield('content')
       </div>
 
@@ -296,8 +463,13 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="/javascripts/bootstrap.min.js"></script>
+      
+      <script src="/javascripts/jqBootstrapValidation.js"></script>
 
       <script type="text/javascript">
+
+          $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+
           function updateTotal(changed) {
               $(changed).parent().next().next().html($(changed).val()*$(changed).parent().next().html());
               var total = 0;
