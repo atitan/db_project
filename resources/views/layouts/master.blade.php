@@ -417,7 +417,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">首頁</a></li>
                 <li><a href="/products">商品總覽</a></li>
-                <li><a href="/cart">購物車</a></li>
+                <li><a href="/cart">購物車 <span class="badge j-cartquantity">{{ count($cart) }}</span></a></li>
                 @if ($user)
                  <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -499,8 +499,6 @@
           }
           function deleteCartItem(item) {
             var id = $(item).parent().parent().find('td:eq(0)').html();
-
-            console.log("id="+id+"&quan=0&_method=PUT&_token={{ csrf_token() }}");
             editCart(id, 0);
           }
           function editCart(id, quan) {
@@ -520,6 +518,7 @@
                   data: "id="+id+"&quan="+quan+"&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
                   success: function(data) {
                       alert('該筆項目已從購物車中刪除。'); // show response from the php script.
+                      location.href = '/cart';
                   }
                });
               }
@@ -530,7 +529,7 @@
                url: "/cart/add",
                data: "id="+id+"&quan=1&_token={{ csrf_token() }}", // serializes the form's elements.
                success: function(data) {
-                   alert('該筆項目已成功新增至購物車。'); // show response from the php script.
+                window.location.reload();
                }
             });
           }
