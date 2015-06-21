@@ -15,8 +15,8 @@ class ProductController extends Controller {
     public function create(Request $req)
     {
         $product = DB::insert(
-            'insert into products (name, price, availability, description, img_path) values (?, ?, ?, ?, ?)',
-            [$req->input('name'), intval($req->input('price')), intval($req->input('availability')), $req->input('description'), $req->input('img_path')]
+            'insert into products (name, price, availability, description, img_path, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?)',
+            [$req->input('name'), intval($req->input('price')), intval($req->input('availability')), $req->input('description'), $req->input('img_path'), (new DateTime())->format('c'), (new DateTime())->format('c')]
         );
 
         return 'ok';
@@ -31,8 +31,8 @@ class ProductController extends Controller {
         }
 
         $product = DB::update(
-            'update products set name=?, price=?, availability=?, description=?, img_path=? where id = ?',
-            [$req->input('name'), intval($req->input('price')), intval($req->input('availability')), $req->input('description'), $req->input('img_path'), $id]
+            'update products set name=?, price=?, availability=?, description=?, img_path=?, updated_at=? where id = ?',
+            [$req->input('name'), intval($req->input('price')), intval($req->input('availability')), $req->input('description'), $req->input('img_path'), (new DateTime())->format('c'), $id]
         );
 
         return 'ok';

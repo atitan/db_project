@@ -37,8 +37,8 @@ class OrderController extends Controller {
         }
 
         $order = DB::insert(
-          'insert into orders (contact, phone, address, total, user_id) values (?, ?, ?, ?, ?)',
-          [$req->input('contact'), $req->input('phone'), $req->input('address'), $total, Session::get('user')->id]
+          'insert into orders (contact, phone, address, total, user_id, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?)',
+          [$req->input('contact'), $req->input('phone'), $req->input('address'), $total, Session::get('user')->id, (new DateTime())->format('c'), (new DateTime())->format('c')]
         );
 
         $orderID = DB::getPdo()->lastInsertId();
@@ -46,12 +46,12 @@ class OrderController extends Controller {
         foreach ($products as $product) {
           $ext_price = $product->price * $cart[$product->id];
           DB::insert(
-            'insert into order_details (order_id, product_id, quantity, extended_price) values (?, ?, ?, ?)',
-            [$orderID, $product->id, $cart[$product->id], $ext_price]
+            'insert into order_details (order_id, product_id, quantity, extended_price, created_at, updated_at) values (?, ?, ?, ?, ?, ?)',
+            [$orderID, $product->id, $cart[$product->id], $ext_price, (new DateTime())->format('c'), (new DateTime())->format('c')]
           );
           DB::update(
-            'update products set availability = ? where id = ?',
-            [($product->availability - $cart[$product->id]), $product->id]
+            'update products set availability = ?, updated_at = ? where id = ?',
+            [($product->availability - $cart[$product->id]), (new DateTime())->format('c'), $product->id]
           );
         }
 
@@ -74,8 +74,8 @@ class OrderController extends Controller {
         ]);
 
         $order = DB::update(
-            'update orders set contact = ?, phone = ?, address = ? where id = ? and user_id = ?',
-            [$req->input('contact'), $req->input('phone'), $req->input('address'), $id, Session::get('user')->id]
+            'update orders set contact = ?, phone = ?, address = ?, updated_at = ? where id = ? and user_id = ?',
+            [$req->input('contact'), $req->input('phone'), $req->input('address'), (new DateTime())->format('c'), $id, Session::get('user')->id]
         );
         return redirect()->route('order_show', ['id' => $id]);
     }

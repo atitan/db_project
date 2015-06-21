@@ -44,8 +44,8 @@ class UserController extends Controller {
 		]);
 
 		$user = DB::insert(
-			'insert into users (username, password, email) values (?, ?, ?)',
-			[$req->input('username'), Hash::make($req->input('password')), $req->input('email')]
+			'insert into users (username, password, email, created_at, updated_at) values (?, ?, ?, ?, ?)',
+			[$req->input('username'), Hash::make($req->input('password')), $req->input('email'), (new DateTime())->format('c'), (new DateTime())->format('c')]
 		);
 
         return redirect()->route('user_login_page');
@@ -71,8 +71,8 @@ class UserController extends Controller {
         ]);
 
 		$user = DB::update(
-            'update users set password = ? where id = ?',
-            [Hash::make($req->input('password')), Session::get('user')->id]
+            'update users set password = ?, updated_at = ? where id = ?',
+            [Hash::make($req->input('password')), (new DateTime())->format('c'), Session::get('user')->id]
         );
 
         return redirect()->route('user_me_show');
