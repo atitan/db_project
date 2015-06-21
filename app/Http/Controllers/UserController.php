@@ -60,7 +60,8 @@ class UserController extends Controller {
 
     public function show()
     {
-        return var_dump(Session::get('user'));
+        // return var_dump(Session::get('user'));
+        return view('user.me', ['products' => Session::get('user')]);
     }
 
     public function update(Request $req)
