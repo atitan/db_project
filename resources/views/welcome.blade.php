@@ -57,146 +57,57 @@
 </div>
 
 <hr />
-
+@if (count($products) >= 8 && shuffle($products))
 <div class="row v-margin-100 product-list">
   <h2 class="text-center">Feature Product</h2>
+  <h1 class="sr-only">Product list</h1>
   <article>
-    <h1 class="sr-only">Product list</h1>
+  @for($i = 0; $i <= 3 ;$i++)
     <div class="col-lg-3 col-sm-6">
       <div class="l-product">
         <div class="l-product-img thumbnail">
-          <img src="https://static.pirates.com.tw/prosimg/1/9/3/3/6/img.img.jpg" alt="Fake image" />
+          <img src="{{ $products[$i]->img_path }}" alt="{{ $products[$i]->name }}" />
         </div>
         <div class="l-product-content">
-          <h2 class="l-product-price h3">12800</h2>
+          <h2 class="l-product-price h3">{{ $products[$i]->price }}</h2>
           <h3 class="h4">
-            <a href="#">Apple Watch 101 手錶面盤的設定</a>
+            <a href="#">{{ $products[$i]->name }}</a>
           </h3>
-          <p>相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <button onclick="addToCart(1)">Add to cart</button>
+          <p>{{ $products[$i]->description }}</p>
+          <button onclick="{{ $products[$i]->id }}">Add to cart</button>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-sm-6">
-      <div class="l-product">
-        <div class="l-product-img thumbnail">
-          <img src="http://cache.iphone4.tw/phpupload/savefiles/20150603093321ee993c0cb8e2c7c9902684119d1e1ed6.jpg" alt="Fake image" />
-        </div>
-        <div class="l-product-content">
-          <h2 class="l-product-price h3">700</h2>
-          <h3 class="h4">
-            <a href="#">Apple Watch 101 手錶面盤的設定</a>
-          </h3>
-          <p>相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <form action="/cart/add" method="post">
-            <input type="hidden" name="id" value="2">
-            <input type="hidden" name="quan" value="1">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          </form>
-            <button onclick="addToCart(2)">Add to cart</button>
-          
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-      <div class="l-product">
-        <div class="l-product-img thumbnail">
-          <img src="https://static.pirates.com.tw/prosimg/2/0/4/8/6/img.img.jpg" alt="Fake image" />
-        </div>
-        <div class="l-product-content">
-          <h2 class="l-product-price h3">1200</h2>
-          <h3 class="h4">
-            <a href="#">Apple Watch 101 手錶面盤的設定</a>
-          </h3>
-          <p>相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <button>Add to cart</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-      <div class="l-product">
-        <div class="l-product-img thumbnail">
-          <img src="https://static.pirates.com.tw/ckeditor/pros/NWH1238414/f3ccdd27d2000e3f9255a7e3e2c48800" alt="Fake image" />
-        </div>
-        <div class="l-product-content">
-          <h2 class="l-product-price h3">1980</h2>
-          <h3 class="h4">
-            <a href="#">智雲 Z1 Rider GoPro 專用三軸穩定器</a>
-          </h3>
-          <p>現在網頁前端設計師求職好像都會遇到要求要會 HTML5+css3，要了解透徹還真的不容易相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <button>Add to cart</button>
-        </div>
-      </div>
-    </div>
+  @endfor
   </article>
-  <!-- 第二列產品在平板跟手機裝置時隱藏 -->
   <article class="hidden-sm hidden-xs">
-    <h1 class="sr-only">Product list</h1>
+  @for($j = 4; $j <= 7 ;$j++) 
     <div class="col-lg-3 col-sm-6">
       <div class="l-product">
         <div class="l-product-img thumbnail">
-          <img src="http://cache.iphone4.tw/phpupload/savefiles/201504140934322e6f17e7d4810ae5c67f4c11c50eeab1.jpg" alt="Fake image" />
+          <img src="{{ $products[$j]->img_path }}" alt="{{ $products[$j]->name }}" />
         </div>
         <div class="l-product-content">
-          <h2 class="l-product-price h3">14800</h2>
+          <h2 class="l-product-price h3">{{ $products[$j]->price }}</h2>
           <h3 class="h4">
-            <a href="#">Patek Philippe 175週年紀念錶款 5175R</a>
+            <a href="#">{{ $products[$j]->name }}</a>
           </h3>
-          <p>相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <button>Add to cart</button>
+          <p>{{ $products[$j]->description }}</p>
+          <button onclick="{{ $products[$j]->id }}">Add to cart</button>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-sm-6">
-      <div class="l-product">
-        <div class="l-product-img thumbnail">
-          <img src="http://cache.iphone4.tw/phpupload/savefiles/20150428024418928bb9c98b5a9bae84d4ee09340c12e1.JPG" alt="Fake image" />
-        </div>
-        <div class="l-product-content">
-          <h2 class="l-product-price h3">7200</h2>
-          <h3 class="h4">
-            <a href="#">羅技 MX Master 鼠王</a>
-          </h3>
-          <p>相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <button>Add to cart</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-      <div class="l-product">
-        <div class="l-product-img thumbnail">
-          <img src="http://cache.iphone4.tw/phpupload/savefiles/201505031034049d509ff33e6adc708b9a46257016d0c6.JPG" alt="Fake image" />
-        </div>
-        <div class="l-product-content">
-          <h2 class="l-product-price h3">2480</h2>
-          <h3 class="h4">
-            <a href="#">羅技 K480 多媒體藍牙鍵盤</a>
-          </h3>
-          <p>相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <button>Add to cart</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-      <div class="l-product">
-        <div class="l-product-img thumbnail">
-          <img src="http://photo.minwt.com/img/Content/3C/2015-0609-blu/blu00.jpg" alt="Fake image" />
-        </div>
-        <div class="l-product-content">
-          <h2 class="l-product-price h3">1200</h2>
-          <h3 class="h4">
-            <a href="#">Blu 手環式智慧型手機</a>
-          </h3>
-          <p>相信大家對於Audi A1 一定不陌生，甚至很多船長跟伙伴家裡都有一輛 這台真的是小巧好開，又漂亮的好車啊</p>
-          <button>Add to cart</button>
-        </div>
-      </div>
-    </div>
+  @endfor
   </article>
   <div class="col-lg-12 text-right h4">
     <button class="product-btn"><a href="/products">See more</a></button>    
   </div>
 </div>
+@else
+  <div class="row v-margin-100 product-list">
+    <h2 class="text-center">There're no enough products to display.</h2>
+  </div>
+@endif
 
 <hr />
 
@@ -272,6 +183,4 @@
     </div>
   </div>
 </div>
-
-
 @stop
