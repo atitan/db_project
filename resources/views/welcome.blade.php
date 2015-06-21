@@ -74,7 +74,7 @@
             <a href="#">{{ $products[$i]->name }}</a>
           </h3>
           <p>{{ $products[$i]->description }}</p>
-          <button onclick="{{ $products[$i]->id }}">Add to cart</button>
+          <button onclick="addToCart({{ $products[$i]->id }})">Add to cart</button>
         </div>
       </div>
     </div>
