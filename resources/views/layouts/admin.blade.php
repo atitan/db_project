@@ -410,15 +410,16 @@
         function deleteProduct(item) {
             var id = $(item).parent().parent().find('td:eq(0)').html();
             var token = "{{ csrf_token() }}";
-            $.ajax({
-               type: "POST",
-               url:  "/admin/products/"+id,
-               data: "_method=DELETE&_token="+token,
-               success: function(data) {
-                   alert('該筆產品資料已成功刪除。');
-                   location.href = '/admin/products';
-               }
-            });
+            if(confirm("您確定要刪除該筆產品資料嗎？") == true) {
+              $.ajax({
+                 type: "POST",
+                 url:  "/admin/products/"+id,
+                 data: "_method=DELETE&_token="+token,
+                 success: function(data) {
+                     location.href = '/admin/products';
+                 }
+              });
+            }
         }
         function editOrder(item) {
             $(item).hide();
@@ -466,15 +467,16 @@
           var record = $(item).parent().parent();
           var id     = $(record).find('span.j-orderid').html();
           var token  = "{{ csrf_token() }}";
-          $.ajax({
-            type: "POST",
-            url:  "/admin/orders/"+id,
-            data: "_method=DELETE&_token="+token,
-            success: function(data) {
-              alert('該筆訂單資料已成功刪除。');
-              location.href = '/admin/orders';
-            }
-          });
+          if(confirm("您確定要刪除該筆訂單資料嗎") == true) {
+            $.ajax({
+              type: "POST",
+              url:  "/admin/orders/"+id,
+              data: "_method=DELETE&_token="+token,
+              success: function(data) {
+                location.href = '/admin/orders';
+              }
+            });
+          }
         }
    </script>
 

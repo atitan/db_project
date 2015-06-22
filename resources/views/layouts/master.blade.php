@@ -468,7 +468,7 @@
       <script src="/javascripts/bootstrap.min.js"></script>
 
       <script src="/javascripts/jqBootstrapValidation.js"></script>
-      
+
       <script src="/javascripts/alertify.min.js"></script>
 
       <script type="text/javascript">
@@ -526,15 +526,16 @@
                   }
                });
               } else {
-                $.ajax({
-                  type: "POST",
-                  url: "/cart/edit",
-                  data: "id="+id+"&quan="+quan+"&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
-                  success: function(data) {
-                      alert('該筆項目已從購物車中刪除。'); // show response from the php script.
-                      location.href = '/cart';
-                  }
-               });
+                if(confirm('確認要從購物車刪除該筆項目嗎？') == true) {
+                  $.ajax({
+                    type: "POST",
+                    url: "/cart/edit",
+                    data: "id="+id+"&quan="+quan+"&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
+                    success: function(data) {
+                        location.href = '/cart';
+                    }
+                 });
+                }
               }
           }
           function addToCart(id) {
@@ -594,18 +595,19 @@
           });
         }
         function deleteOrder(item) {
-          var record = $(item).parent().parent();
-          var id     = $(record).find('span.j-orderid').html();
-          var token  = "{{ csrf_token() }}";
-          $.ajax({
-            type: "POST",
-            url:  "/orders/"+id,
-            data: "_method=DELETE&_token="+token,
-            success: function(data) {
-              alert('該筆訂單資料已成功刪除。');
-              location.href = '/orders';
-            }
-          });
+          var record  = $(item).parent().parent();
+          var id      = $(record).find('span.j-orderid').html();
+          var token   = "{{ csrf_token() }}";
+          if(confirm('確認要刪除該筆訂單資料嗎？') == true) {
+            $.ajax({
+              type: "POST",
+              url:  "/orders/"+id,
+              data: "_method=DELETE&_token="+token,
+              success: function(data) {
+                location.href = '/orders';
+              }
+            });
+          }
         }
         function editUserData(item) {
           $(item).hide();
