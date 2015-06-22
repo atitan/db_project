@@ -127,7 +127,7 @@ class OrderController extends Controller {
         $id = $req->input('id');
         $quan = $req->input('quan');
 
-        if (empty(DB::select('select * from products where id=?',[$id]))) {
+        if (empty(DB::select('select * from products where availability > 0 and id = ?',[$id]))) {
             abort(404);
         }
 
