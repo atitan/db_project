@@ -62,7 +62,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">後臺管理介面</a>
+                <a class="navbar-brand" href="/admin/products">後臺管理介面</a>
             </div>
             <!-- /.navbar-header -->
 
