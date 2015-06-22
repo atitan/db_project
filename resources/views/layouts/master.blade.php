@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta http-eqiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>還沒想好名字</title>
+      <title>還沒想好名字｜@yield('content')</title>
       <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
       <!-- Optional theme -->
       <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-theme.min.css">
@@ -212,8 +212,8 @@
         .nav>li>a.inline-block {
           display: inline-block;
         }
-        .cursor:hover { 
-          cursor: pointer; 
+        .cursor:hover {
+          cursor: pointer;
         }
         #orderDetails table td {
           vertical-align: middle;
@@ -363,8 +363,8 @@
           transform: translate3d(0,0,0);
         }
         @media screen and (max-width: 42em) {
-          .link--takiri { 
-            font-size: 3.5em; 
+          .link--takiri {
+            font-size: 3.5em;
           }
         }
 
@@ -463,7 +463,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="/javascripts/bootstrap.min.js"></script>
-      
+
       <script src="/javascripts/jqBootstrapValidation.js"></script>
 
       <script type="text/javascript">
@@ -528,8 +528,12 @@
                type: "POST",
                url: "/cart/add",
                data: "id="+id+"&quan=1&_token={{ csrf_token() }}", // serializes the form's elements.
-               success: function(data) {
-                window.location.reload();
+               success: function(data, status) {
+                 if(data != 'ok') {
+                   location.href = '/user/login';
+                 } else {
+                   window.location.reload();
+                 }
                }
             });
           }
