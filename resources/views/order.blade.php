@@ -44,10 +44,10 @@
             {{ $order[0]->updated_at }}
           </td>
           <td>
-            <a a role="button" data-toggle="collapse" data-parent="#orderDetails" href="#orderDetails" aria-expanded="true" aria-controls="orderDetails" style="margin-right: 8px;"><span class="fa fa-info-circle"> 檢視</span></a>
-            <a onclick="editOrder(this)" class="cursor" style="margin-right: 8px;"><span class="fa fa-pencil"> 編輯</span></a>
-            <a onclick="confirmEditOrder(this)" class="cursor"  style="margin-right: 8px; color: green; display: none;"><span class="fa fa-check"> 確認</span></a>
-            <a onclick="deleteOrder(this)" class="cursor" style="color: red;"><span class="fa fa-trash-o"> 刪除</span></a></span>
+            <a a role="button" data-toggle="collapse" data-parent="#orderDetails" href="#orderDetails" aria-expanded="true" aria-controls="orderDetails" style="margin-right: 8px;"><i class="fa fa-info-circle"></i><span> 檢視</span></a>
+            <a onclick="editOrder(this)" class="cursor" style="margin-right: 8px;"><i class="fa fa-pencil"></i><span> 編輯</span></a>
+            <a onclick="confirmEditOrder(this)" class="cursor"  style="margin-right: 8px; color: green; display: none;"><i class="fa fa-check"></i><span> 確認</span></a>
+            <a onclick="deleteOrder(this)" class="cursor" style="color: red;"><i class="fa fa-trash-o"></i><span> 刪除</span></a>
           </td>
         </tr>
       </tbody>

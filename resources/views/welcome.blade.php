@@ -32,11 +32,15 @@
             <a href="#">{{ $products[$i]->name }}</a>
           </h3>
           <p>{{ $products[$i]->description }}</p>
+<<<<<<< Updated upstream
           @if($products[$i]->availability > 1)
           <button onclick="addToCart({{ $products[$i]->id }})">Add to cart</button>
           @else
           <button disabled="disabled" style="background-color: #bbb;">已售完</button>
           @endif
+=======
+          <button onclick="addToCart({{ $products[$i]->id }})" >Add to cart</button>
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>

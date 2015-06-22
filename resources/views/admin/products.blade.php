@@ -80,7 +80,7 @@
     				<td class="text-center">
     					<a onclick="editProduct(this)" class="cursor" style="margin-right: 8px;"><span><i class="fa fa-pencil"></i> 編輯</span></a>
     					<a onclick="confirmEditProduct(this)" class="cursor"  style="margin-right: 8px; color: green; display: none;"><span><i class="fa fa-check"></i> 確認</span></a>
-    					<a onclick="deleteProduct(this)" class="cursor" style="color: red;"><span><i class="fa fa-trash-o"> 刪除</i></span></a>
+    					<a onclick="deleteProduct(this)" class="cursor" style="color: red;"><span><i class="fa fa-trash-o"></i>刪除</span></a>
     				</td>
     			</tr>
     			@endforeach

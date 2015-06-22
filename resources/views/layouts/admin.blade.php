@@ -26,6 +26,16 @@
     <!-- MetisMenu CSS -->
     <link href="/stylesheets/metisMenu.min.css" rel="stylesheet">
 	<style>
+        @import url(http://fonts.googleapis.com/earlyaccess/cwtexhei.css);
+        @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+        html,
+        body {
+          font-family: 'Ubuntu', 'cwTeXHei', sans-serif;
+        }
+        a,
+        table a:not(.btn), .table a:not(.btn) {
+            text-decoration: none;
+        }
 		table#productinfo tr td {
 			vertical-align: middle;
 		}
@@ -300,6 +310,9 @@
                         </li>
                         <li>
                             <a href="/me"><i class="fa fa-cogs fa-fw"></i> 帳號管理</a>
+                        </li>
+                        <li>
+                            <a href="/"><i class="fa fa-arrow-left fa-fw"></i> 回前台</a>
                         </li>
                     </ul>
                 </div>

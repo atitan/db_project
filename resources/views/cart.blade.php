@@ -19,7 +19,9 @@
 		@foreach ($products as $product)
 			<tr>
 				<td class="text-center">{{$product->id}}</td>
-				<td></td>
+				<td class="text-center">
+					<img src="{{ $product->img_path }}" alt="{{ $product->name }}" class="img-responsive img-thumbnail" style="max-width: 6em; margin: 0 auto;">
+				</td>
 				<td>{{$product->name}}</td>
 				<td class="text-center">
 					<span>{{ $cart[$product->id] }}</span> 
@@ -45,9 +47,9 @@
 				<td class="text-right">{{ $product->price }}</td>
 				<td class="text-right">{{ $product->price*$cart[$product->id] }}</td>
 				<td class="text-center">
-				<a onclick="editValue(this)" class="cursor" style="margin-right: 8px;"><span class="fa fa-pencil"> 編輯</span></a>
-				<a onclick="confirmValue(this)" class="cursor"  style="margin-right: 8px; display: none;"><span class="fa fa-check"> 確認</span></a>
-				<a onclick="deleteCartItem(this)" class="cursor"><span class="fa fa-trash-o"> 刪除</span></a></span></td>
+				<a onclick="editValue(this)" class="cursor" style="margin-right: 8px; color: green;"><i class="fa fa-pencil"></i><span>編輯</span></a>
+				<a onclick="confirmValue(this)" class="cursor"  style="margin-right: 8px; color: green; display: none;"><i class="fa fa-check"></i><span>確認</span></a>
+				<a onclick="deleteCartItem(this)" class="cursor" style="color: red;"><i class="fa fa-trash-o"></i><span>刪除</span></a></td>
 			</tr>
 		@endforeach
 		</tbody>

@@ -23,7 +23,8 @@
           font-family: 'Ubuntu', 'cwTeXHei', sans-serif;
           padding-top: 70px;
         }
-        a {
+        a,
+        table a:not(.btn), .table a:not(.btn) {
           text-decoration: none;
           color: #727272;
         }
@@ -372,6 +373,7 @@
         .grid__item>a {
           top: 40vh;
         }
+
       </style>
     </head>
     <body>
@@ -386,9 +388,9 @@
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand navbar-inline" href="/">
-                <i class="fa fa-flag"></i>
+                <i class="fa fa-flag" style=" font-size: 1.3em; margin-right: 3px;"></i>
                 {{-- <img src="../img/Logo.png" class="img-responsive img-logo" alt="Brand" /> --}}
-                還沒想好名字
+                 還沒想好名字
               </a>
             </div>
 
@@ -416,24 +418,24 @@
                 <button type="submit" class="btn btn-default">Submit</button>
               </form> -->
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">首頁</a></li>
-                <li><a href="/products">商品總覽</a></li>
-                <li><a href="/cart">購物車 <span class="badge j-cartquantity">{{ count($cart) }}</span></a></li>
+                <li><a href="/" style=" font-size: 1.3em;">首頁</a></li>
+                <li><a href="/products" style=" font-size: 1.3em;">商品總覽</a></li>
+                <li><a href="/cart" style=" font-size: 1.3em;">購物車 <span class="badge j-cartquantity" style="color: #009688; background-color: #fff; font-size: 1.5rem;">{{ count($cart) }}</span></a></li>
                 @if ($user)
                  <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style=" font-size: 1.3em;">
                     {{ $user->username }}，您好！<span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="/orders">訂單查詢</a></li>
-                    <li><a href="/me">會員資料更新</a></li>
+                    <li><a href="/orders" style=" font-size: 1.3em;">訂單查詢</a></li>
+                    <li><a href="/me" style=" font-size: 1.3em;">會員資料更新</a></li>
                     <li class="divider"></li>
                     @if( $user->is_admin == '1' )
-                      <li><a href="/admin/orders">後台管理系統</a></li>
+                      <li><a href="/admin/orders" style=" font-size: 1.3em;">後台管理系統</a></li>
                       <li class="divider"></li>
                     @endif
                     <li>
-                        <a class="cursor" onclick="userLogout()">登出</a>
+                        <a class="cursor" onclick="userLogout()" style=" font-size: 1.3em;">登出</a>
                     </li>
                   </ul>
                 </li>
