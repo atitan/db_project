@@ -39,7 +39,7 @@
   @endfor
   </article>
   <article class="hidden-sm hidden-xs">
-  @for($j = 4; $j <= 7 ;$j++) 
+  @for($j = 4; $j <= 7 ;$j++)
     <div class="col-lg-3 col-sm-6">
       <div class="l-product">
         <div class="l-product-img thumbnail">
@@ -51,14 +51,14 @@
             <a href="#">{{ $products[$j]->name }}</a>
           </h3>
           <p>{{ $products[$j]->description }}</p>
-          <button onclick="{{ $products[$j]->id }}">Add to cart</button>
+          <button onclick="addToCart({{ $products[$i]->id }})">Add to cart</button>
         </div>
       </div>
     </div>
   @endfor
   </article>
   <div class="col-lg-12 text-right h4">
-    <button class="product-btn"><a href="/products">See more</a></button>    
+    <button class="product-btn"><a href="/products">See more</a></button>
   </div>
 </div>
 @else
