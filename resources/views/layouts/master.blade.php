@@ -16,6 +16,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+      <link href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet">
       <style>
         @import url(http://fonts.googleapis.com/earlyaccess/cwtexhei.css);
         @import url(http://fonts.googleapis.com/css?family=Ubuntu);
@@ -402,7 +403,28 @@
             text-align: center;
           }
         }
-
+        table.dataTable thead .sorting_asc:after,
+        table.dataTable thead .sorting:after,
+        table.dataTable thead .sorting_desc:after {
+            content: "";
+        }
+        .dataTables_length,
+        .dataTables_filter,
+        .dataTables_info,
+        .dataTables_paginate {
+            padding: 10px;
+        }
+        .table>thead>tr>th,
+        .table>tbody>tr>th,
+        .table>tfoot>tr>th,
+        .table>thead>tr>td,
+        .table>tbody>tr>td,
+        .table>tfoot>tr>td {
+            vertical-align: middle;
+        }
+        table.dataTable thead>tr {
+            background-color: #F3F2FD;
+        }
       </style>
     </head>
     <body>
@@ -500,7 +522,12 @@
 
       <script src="/javascripts/alertify.min.js"></script>
 
+      <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
       <script type="text/javascript">
+          $(document).ready(function(){
+              $('#userOrders').DataTable();
+          });
 
           // alertify
           function alertifyreset () {

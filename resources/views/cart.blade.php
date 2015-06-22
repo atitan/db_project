@@ -48,9 +48,9 @@
 				<td class="text-right">{{ $product->price }}</td>
 				<td class="text-right">{{ $product->price*$cart[$product->id] }}</td>
 				<td class="text-center">
-				<a onclick="editValue(this)" class="cursor" style="margin-right: 8px; color: green;"><i class="fa fa-pencil"></i><span>編輯</span></a>
-				<a onclick="confirmValue(this)" class="cursor"  style="margin-right: 8px; color: green; display: none;"><i class="fa fa-check"></i><span>確認</span></a>
-				<a onclick="deleteCartItem(this)" class="cursor" style="color: red;"><i class="fa fa-trash-o"></i><span>刪除</span></a></td>
+				<a onclick="editValue(this)" class="cursor" style="margin-right: 8px; color: #158cda;"><span><i class="fa fa-pencil"></i> 編輯</span></a>
+				<a onclick="confirmValue(this)" class="cursor"  style="margin-right: 8px; color: green; display: none;"><span><i class="fa fa-check"></i> 確認</span></a>
+				<a onclick="deleteCartItem(this)" class="cursor" style="color: red;"><span><i class="fa fa-trash-o"></i> 刪除</span></a></td>
 			</tr>
 		@endforeach
 		</tbody>

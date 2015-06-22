@@ -29,7 +29,7 @@
         <div class="l-product-content">
           <h2 class="l-product-price h3">{{ $products[$i]->price }}</h2>
           <h3 class="h4">
-            <a href="#">{{ $products[$i]->name }}</a>
+            <a href="#product{{ $products[$i] -> id }}" data-toggle="modal" data-target="#product{{ $products[$i] -> id }}">{{ $products[$i]->name }}</a>
           </h3>
           <p>{{ $products[$i]->description }}</p>
           @if($products[$i]->availability > 1)
@@ -52,7 +52,7 @@
         <div class="l-product-content">
           <h2 class="l-product-price h3">{{ $products[$j]->price }}</h2>
           <h3 class="h4">
-            <a href="#">{{ $products[$j]->name }}</a>
+            <a href="#product{{ $products[$j] -> id }}" data-toggle="modal" data-target="#product{{ $products[$j] -> id }}">{{ $products[$j]->name }}</a>
           </h3>
           <p>{{ $products[$j]->description }}</p>
           @if($products[$j]->availability > 1)
@@ -70,11 +70,44 @@
     <button class="product-btn"><a href="/products">See more</a></button>
   </div>
 </div>
+@for($z = 0; $z <= 7 ;$z++)
+<div class="modal fade" id="product{{ $products[$z] -> id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $products[$z] -> name }}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{ $products[$z] -> name }}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="l-product-img thumbnail">
+          <img src="{{ $products[$z]->img_path }}" alt="{{ $products[$z]->name }}" />
+        </div>
+        <div class="l-product-content">
+          <h3 class="l-product-price">{{ $products[$z] -> price }}</h3>
+          <h3>產品名稱：{{ $products[$z] -> name }}</h3>
+          <h3>產品描述：</h3>
+          <p>{{ $products[$z]->description }}</p>
+          <h3>產品庫存：{{ $products[$z]->availability }}</h3>
+        </div>
+      </div>
+      <div class="modal-footer">
+        @if($products[$z]->availability > 1)
+        <button onclick="addToCart({{ $products[$z]->id }})" class="btn btn-success">Add to cart</button>
+        @else
+        <button disabled="disabled" class="btn btn-default" style="background-color: #bbb;">已售完</button>
+        @endif
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endfor
 @else
   <div class="row v-margin-100 product-list">
     <h2 class="text-center">There're no enough products to display.</h2>
   </div>
 @endif
+
 
 <hr />
 
