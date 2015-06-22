@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
-@section('title', '檢視訂單')
+@section('title')
+  訂單檢視 #{{ $order[0]->order_id }}
+@stop
 
 @section('content')
 <div class="panel panel-primary">
@@ -71,11 +73,11 @@
             <td class="text-right">{{ $order->extended_price }}</td>
           </tr>
           @endforeach
-        </tbody>  
+        </tbody>
       </table>
     </div>
   </div>
-  
+
 </div>
 
 @stop

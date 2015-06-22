@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Page Title')
+@section('title', '登入')
 
 @section('sidebar')
     @parent
@@ -14,12 +14,12 @@
       <div class="v-margin-md control-group">
         <i class="fa fa-user fa-fw"></i><label class="control-label" for="username">Username</label>
         <div class="controls">
-          <input 
+          <input
             id="username"
-            class="form-control" 
-            type="text" 
-            name="username" 
-            placeholder="Username" 
+            class="form-control"
+            type="text"
+            name="username"
+            placeholder="Username"
             required
           />
           <p class="help-block" style="color: #ff0000"></p>
@@ -28,12 +28,12 @@
       <div class="v-margin-md control-group">
         <i class="fa fa-key fa-fw"></i><label class="control-label" for="password">Password</label>
         <div class="controls">
-          <input 
-            id="password" 
-            class="form-control" 
-            type="password" 
-            name="password" 
-            placeholder="Password" 
+          <input
+            id="password"
+            class="form-control"
+            type="password"
+            name="password"
+            placeholder="Password"
             required
           />
           <p class="help-block" style="color: #ff0000"></p>

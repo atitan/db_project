@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Page Title')
+@section('title', '首頁')
 
 @section('content')
 <div class="cover-image img-responsive">

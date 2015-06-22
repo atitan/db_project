@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', '')
+@section('title')
+  訂單檢視 #{{ $order[0]->order_id }}
+@stop
 
 @section('content')
   <h2>訂單詳細資訊</h2>
@@ -74,7 +76,7 @@
     	            <td class="text-right">{{ $order->extended_price }}</td>
     	          </tr>
     	          @endforeach
-    	        </tbody>  
+    	        </tbody>
     	      </table>
     	    </div>
     	</div>

@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta http-eqiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>還沒想好名字｜@yield('content')</title>
+      <title>還沒想好名字｜@yield('title')</title>
       <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
       <!-- Optional theme -->
       <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-theme.min.css">

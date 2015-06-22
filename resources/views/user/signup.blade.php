@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Page Title')
+@section('title', '加入會員')
 
 @section('sidebar')
     @parent
@@ -18,12 +18,12 @@
       <div class="v-margin-md control-group">
         <i class="fa fa-user fa-fw"></i><label class="control-label" for="username">Username</label>
         <div class="controls">
-          <input 
+          <input
             id="username"
-            class="form-control" 
-            type="text" 
-            name="username" 
-            placeholder="Username" 
+            class="form-control"
+            type="text"
+            name="username"
+            placeholder="Username"
             required
           />
           <p class="help-block" style="color: #ff0000"></p>
@@ -32,12 +32,12 @@
       <div class="v-margin-md control-group">
         <i class="fa fa-envelope fa-fw"></i><label class="control-label" for="email">Email address</label>
         <div class="controls">
-          <input 
-            id="email" 
-            class="form-control" 
-            type="email" 
-            name="email" 
-            placeholder="Email address" 
+          <input
+            id="email"
+            class="form-control"
+            type="email"
+            name="email"
+            placeholder="Email address"
             required
           />
           <p class="help-block" style="color: #ff0000"></p>
@@ -46,13 +46,13 @@
       <div class="v-margin-md control-group">
         <i class="fa fa-key fa-fw"></i><label class="control-label" for="password">Password</label>
         <div class="controls">
-          <input 
-            id="password" 
-            class="form-control" 
-            type="password" 
-            name="password" 
+          <input
+            id="password"
+            class="form-control"
+            type="password"
+            name="password"
             minlength="8"
-            placeholder="Password" 
+            placeholder="Password"
             data-validation-minlength-message="至少8位數"
             required
           />
@@ -62,15 +62,15 @@
       <div class="v-margin-md control-group">
         <i class="fa fa-key fa-fw"></i><label class="control-label" for="retype-password">Retype Password</label>
         <div class="controls">
-          <input 
-            id="retype-password" 
+          <input
+            id="retype-password"
             class="form-control"
             type="password"
             name="retype-password"
             placeholder="Retype Password"
-            data-validation-match-match="password" 
+            data-validation-match-match="password"
             data-validation-match-message="輸入的兩組密碼不相符"
-            required 
+            required
           />
           <p class="help-block" style="color: #ff0000"></p>
         </div>
