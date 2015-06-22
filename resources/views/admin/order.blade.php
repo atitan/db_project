@@ -19,7 +19,7 @@
     	      <th>收件地址</th>
     	      <th class="text-center">總金額</th>
     	      <th class="text-center">建立日期</th>
-    	      <th>Actions</th>
+    	      <th class="text-center">Actions</th>
     	    </tr>
     	  </thead>
     	  <tbody>
@@ -45,9 +45,9 @@
     	      <td class="text-center">
     	        {{ $order[0]->updated_at }}
     	      </td>
-    	      <td>
-    	      	<a a role="button" data-toggle="collapse" data-parent="#orderDetails" href="#orderDetails" aria-expanded="true" aria-controls="orderDetails" style="margin-right: 8px;"><span class="fa fa-info-circle"> 檢視</span></a>
-    	        <a onclick="editOrder(this)" class="cursor" style="margin-right: 8px;"><span class="fa fa-pencil"> 編輯</span></a>
+    	      <td nowrap="nowrap" class="text-center">
+    	      	<a a role="button" data-toggle="collapse" data-parent="#orderDetails" href="#orderDetails" aria-expanded="true" aria-controls="orderDetails" style="margin-right: 8px;"><span class="fa fa-info-circle"> 檢視</span></a><br/>
+    	        <a onclick="editOrder(this)" class="cursor" style="margin-right: 8px; color: green;"><span class="fa fa-pencil"> 編輯</span></a>
     	        <a onclick="confirmEditOrder(this)" class="cursor"  style="margin-right: 8px; color: green; display: none;"><span class="fa fa-check"> 確認</span></a>
     	        <a onclick="deleteOrder(this)" class="cursor" style="color: red;"><span class="fa fa-trash-o"> 刪除</span></a></span>
     	      </td>

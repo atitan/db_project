@@ -3,7 +3,8 @@
 @section('title', '購物車')
 
 @section('content')
-	<table id="shoppingcart" class="table table-hover table-responsive">
+<div class="table-responsive">
+	<table id="shoppingcart" class="table table-hover">
 		<thead>
 			<tr>
 				<th class="text-center">#</th>
@@ -68,8 +69,10 @@
 			</tr>
 		</tfoot>
 	</table>
+</div>
+	
 	<hr>
-	<div class="col-lg-offset-8 col-lg-4">
+	<div class="col-md-offset-8 col-md-4">
 		<form action="/orders" method="POST" novalidate>
 			<div class="v-margin-md control-group">
 				<i class="fa fa-user fa-fw"></i><label class="control-label" for="contact">收件人</label>

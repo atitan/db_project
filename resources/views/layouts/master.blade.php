@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta http-eqiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>還沒想好名字｜@yield('title')</title>
+      <title>GoBuy｜@yield('title')</title>
       <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
       <!-- Optional theme -->
       <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-theme.min.css">
@@ -285,16 +285,15 @@
 
         /* Cover Image style */
         .cover-image {
-          background: url('../img/cycu.jpg') center 10% no-repeat;
+          background: url('../img/cover.jpg') center 30% no-repeat;
         }
         .cover {
-          min-height: 90vh;
+          min-height: 50vh;
           background-color: rgba(255, 249, 196, 0.3);
           background-image: url('../img/mask.png');
         }
         .cover h1 {
           color: #fff;
-          padding-top: 10%;
         }
 
         .wrap {
@@ -371,7 +370,7 @@
         }
 
         .grid__item>a {
-          top: 40vh;
+          top: 20vh;
         }
 
       </style>
@@ -387,10 +386,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand navbar-inline" href="/">
-                <i class="fa fa-flag" style=" font-size: 1.3em; margin-right: 3px;"></i>
+              <a class="navbar-brand navbar-inline" href="" style="font-size: 1.8em;">
+                <i class="fa fa-flag" style="margin-right: 3px;"></i>
                 {{-- <img src="../img/Logo.png" class="img-responsive img-logo" alt="Brand" /> --}}
-                 還沒想好名字
+                 GoBuy
               </a>
             </div>
 
@@ -440,7 +439,7 @@
                   </ul>
                 </li>
                 @else
-                <li><a href="/user/signup" class="inline-block">加入會員</a>/<a href="/user/login" class="inline-block">登入</a></li>
+                <li style=" font-size: 1.3em;"><a href="/user/signup" class="inline-block">加入會員</a>/<a href="/user/login" class="inline-block">登入</a></li>
                 @endif
               </ul>
             </div>
