@@ -18,7 +18,11 @@
                 <a href="#">{{ $product->name }}</a>
               </h3>
               <p>{{ $product->description }}</p>
+              @if($product->availability > 1)
               <button onclick="addToCart({{ $product->id }})">Add to cart</button>
+              @else
+              <button disabled="disabled" style="background-color: #bbb;">已售完</button>
+              @endif
             </div>
           </div>
         </div>

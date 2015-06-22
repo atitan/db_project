@@ -32,7 +32,11 @@
             <a href="#">{{ $products[$i]->name }}</a>
           </h3>
           <p>{{ $products[$i]->description }}</p>
+          @if($products[$i]->availability > 1)
           <button onclick="addToCart({{ $products[$i]->id }})">Add to cart</button>
+          @else
+          <button disabled="disabled" style="background-color: #bbb;">已售完</button>
+          @endif
         </div>
       </div>
     </div>
@@ -51,7 +55,11 @@
             <a href="#">{{ $products[$j]->name }}</a>
           </h3>
           <p>{{ $products[$j]->description }}</p>
-          <button onclick="addToCart({{ $products[$i]->id }})">Add to cart</button>
+          @if($products[$j]->availability > 1)
+          <button onclick="addToCart({{ $products[$j]->id }})">Add to cart</button>
+          @else
+          <button disabled="disabled" style="background-color: #bbb;">已售完</button>
+          @endif
         </div>
       </div>
     </div>
