@@ -10,10 +10,12 @@
     <meta name="author" content="">
 
     <title>後臺管理介面｜@yield('title')</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
   	<!-- Optional theme -->
     <link href="/stylesheets/sb-admin-2.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/alertify.core.css">
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -324,7 +326,16 @@
     <script src="/javascripts/sb-admin-2.js"></script>
     <!-- Metis Menu Plugin JavaScript -->
     <script src="/javascripts/metisMenu.min.js"></script>
-   <script type="text/javascript">
+    <script src="/javascripts/alertify.min.js"></script>
+
+    <script type="text/javascript">
+      // alertify
+        function alertifyreset () {
+          alertify.set({
+            delay : 5000,
+          });
+        }
+
       function addNewProduct(item) {
         var name         = $('#newProductName').val();
         var price        = $('#newProductPrice').val();
@@ -374,12 +385,13 @@
    		function updateProduct(id, img_path, name, price, description, avalibility) {
    			var token = "{{ csrf_token() }}";
    			$.ajax({
-   			   type: "POST",
-   			   url:  "/admin/products/"+id,
-   			   data: "name="+name+"&price="+price+"&availability="+avalibility+"&description="+description+"&img_path="+img_path+"&_method=PUT&_token="+token,
-   			   success: function(data) {
-   			       alert('該筆產品資料已成功更新。');
-   			   }
+          type: "POST",
+          url:  "/admin/products/"+id,
+          data: "name="+name+"&price="+price+"&availability="+avalibility+"&description="+description+"&img_path="+img_path+"&_method=PUT&_token="+token,
+          success: function(data) {
+            alertifyreset();
+            alertify.success('該筆產品資料已成功更新。');
+   			  }
    			});
    		}
         function deleteProduct(item) {
@@ -432,7 +444,8 @@
             url:  "/admin/orders/"+id,
             data: "contact="+contact+"&phone="+phone+"&address="+address+"&_method=PUT&_token="+token,
             success: function(data) {
-              alert('該筆訂單資料已成功更新。');
+              alertifyreset();
+              alertify.success('該筆訂單資料已成功更新。');
             }
           });
         }

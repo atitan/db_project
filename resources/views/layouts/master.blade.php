@@ -9,6 +9,7 @@
       <!-- Optional theme -->
       <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-theme.min.css">
       <link rel="stylesheet" type="text/css" href="/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/alertify.core.css">
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
       <!--[if lt IE 9]>
@@ -465,9 +466,19 @@
       <script src="/javascripts/bootstrap.min.js"></script>
 
       <script src="/javascripts/jqBootstrapValidation.js"></script>
+      
+      <script src="/javascripts/alertify.min.js"></script>
 
       <script type="text/javascript">
 
+          // alertify
+          function alertifyreset () {
+            alertify.set({
+              delay : 5000,
+            });
+          }
+
+          // jqBootstrapValidation
           $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 
           function updateTotal(changed) {
@@ -508,7 +519,8 @@
                   url: "/cart/edit",
                   data: "id="+id+"&quan="+quan+"&_method=PUT&_token={{ csrf_token() }}", // serializes the form's elements.
                   success: function(data) {
-                      alert('更新購物車成功。'); // show response from the php script.
+                    alertifyreset();
+                    alertify.success('更新購物車成功。'); // show response from the php script.
                   }
                });
               } else {
@@ -574,7 +586,8 @@
             url:  "/orders/"+id,
             data: "contact="+contact+"&phone="+phone+"&address="+address+"&_method=PUT&_token="+token,
             success: function(data) {
-              alert('您的訂單資料已成功更新。');
+              alertifyreset();
+              alertify.success('您的訂單資料已成功更新。');
             }
           });
         }
@@ -619,8 +632,8 @@
             url:  "/me",
             data: "password="+password+"&_method=PUT&_token="+token,
             success: function(data) {
-              alert('您的密碼已更新。');
-
+              alertifyreset();
+              alertify.success('您的密碼已更新。');
             }
           });
         }
