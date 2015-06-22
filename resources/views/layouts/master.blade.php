@@ -416,7 +416,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand navbar-inline" href="" style="font-size: 1.8em;">
+              <a class="navbar-brand navbar-inline" href="/" style="font-size: 1.8em;">
                 <i class="fa fa-flag" style="margin-right: 3px;"></i>
                 {{-- <img src="../img/Logo.png" class="img-responsive img-logo" alt="Brand" /> --}}
                  GoBuy
