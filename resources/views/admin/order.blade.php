@@ -10,7 +10,7 @@
   <div class="panel panel-success">
     <div class="panel-heading">訂單 #{{ $order[0]->order_id }}</div>
     <div class="table-responsive">
-    	<table class="table table-responsive table-hover">
+    	<table class="table table-hover">
     	  <thead>
     	    <tr>
     	      <th class="text-right">#</th>

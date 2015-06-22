@@ -38,8 +38,8 @@
 	</div>
 	<div class="panel panel-warning">
 	  <div class="panel-heading">檢視 / 編輯現有商品</div>
-	  <div class="panel-body">
-	    <table class="table table-hover table-responsive" id="productinfo">
+	  <div class="table-responsive">
+	    <table class="table table-hover" id="productinfo">
     		<thead>
     			<tr>
     				<th class="text-right">#</th>
@@ -78,9 +78,9 @@
     				</td>
     				<td class="text-center">{{ $product->updated_at }}</td>
     				<td class="text-center">
-    					<a onclick="editProduct(this)" class="cursor" style="margin-right: 8px;"><span class="fa fa-pencil"> 編輯</span></a>
-    					<a onclick="confirmEditProduct(this)" class="cursor"  style="margin-right: 8px; color: green; display: none;"><span class="fa fa-check"> 確認</span></a>
-    					<a onclick="deleteProduct(this)" class="cursor" style="color: red;"><span class="fa fa-trash-o"> 刪除</span></a></span>
+    					<a onclick="editProduct(this)" class="cursor" style="margin-right: 8px;"><span><i class="fa fa-pencil"></i> 編輯</span></a>
+    					<a onclick="confirmEditProduct(this)" class="cursor"  style="margin-right: 8px; color: green; display: none;"><span><i class="fa fa-check"></i> 確認</span></a>
+    					<a onclick="deleteProduct(this)" class="cursor" style="color: red;"><span><i class="fa fa-trash-o"> 刪除</i></span></a>
     				</td>
     			</tr>
     			@endforeach
