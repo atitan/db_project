@@ -285,13 +285,22 @@
 
         /* Cover Image style */
         .cover-image {
-          background: url('../img/cover.jpg') center 30% no-repeat;
+          background: url('../img/cover.jpg') 30% 30% no-repeat;
+          background-size: cover;
         }
+
         .cover {
           min-height: 50vh;
           background-color: rgba(255, 249, 196, 0.3);
           background-image: url('../img/mask.png');
         }
+
+        @media screen and (max-width: 768px) {
+          .cover {
+            min-height: 30vh;
+          }
+        }
+
         .cover h1 {
           color: #fff;
         }
@@ -326,7 +335,7 @@
           color: #1e1a1b;
           text-decoration: none;
         }
-        .link--takiri::before {
+/*        .link--takiri::before {
           content: '';
           position: absolute;
           height: 36px;
@@ -340,11 +349,11 @@
           transform: rotate3d(0,0,1,45deg) scale3d(0,1,1);
           -webkit-transition: -webkit-transform 0.5s;
           transition: transform 0.5s;
-        }
-        .link--takiri:hover::before {
+        }*/
+/*        .link--takiri:hover::before {
           -webkit-transform: rotate3d(0,0,1,45deg) scale3d(1,1,1);
           transform: rotate3d(0,0,1,45deg) scale3d(1,1,1);
-        }
+        }*/
         .link--takiri span {
           font-size: 20%;
           font-weight: 400;
@@ -363,14 +372,35 @@
           -webkit-transform: translate3d(0,0,0);
           transform: translate3d(0,0,0);
         }
-        @media screen and (max-width: 42em) {
+        @media screen and (max-width: 769px) {
           .link--takiri {
             font-size: 3.5em;
           }
         }
 
         .grid__item>a {
-          top: 20vh;
+          bottom: 0;
+          margin-right: 5%;
+          margin-top: 30%;
+          margin-bottom: 1%;
+        }
+
+        @media screen and (max-width: 1199px) {
+          .grid__item>a {
+            margin-top: 40%;
+          }
+        }
+
+        @media screen and (max-width: 992px) {
+          .grid__item>a {
+            margin-top: 50%;
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          .grid__item {
+            text-align: center;
+          }
         }
 
       </style>

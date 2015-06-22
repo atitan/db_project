@@ -7,7 +7,7 @@
   <div class="cover">
     <div class="container">
       <div class="grid">
-        <div class="grid__item text-center">
+        <div class="grid__item text-right">
           <a class="link link--takiri" href="/">Welcome <span>Buy What You Love</span></a>
         </div>
       </div>
